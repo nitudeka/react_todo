@@ -115,7 +115,7 @@ class Register extends Component {
     
     return (
       <div className='form'>
-        <div className='form__head'>
+        <div onClick={() => console.log(this.props.email)} className='form__head'>
           <h3 className='form__heading'>Register</h3>
         </div>
         {form}

@@ -5,6 +5,13 @@ const initialState = {
   taskProgress: []
 }
 
+const resetState = {
+  name: '',
+  email: '',
+  tasks: [],
+  taskProgress: []
+}
+
 export default (state=initialState, action={}) => {
   switch (action.type) {
     case 'GET_TASKS':
@@ -16,6 +23,9 @@ export default (state=initialState, action={}) => {
         taskProgress: action.payload.taskProgress
       }
     
+    case 'RESET_STATE':
+      return { resetState };
+
     default: return state;
   }
 }
