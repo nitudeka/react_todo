@@ -88,14 +88,16 @@ class Register extends Component {
         })
       }).then((res) => res.json())
       .then((userData) => {
-        const email = userData.email;
-        const name = userData.name;
-        const tasks = Object.keys(userData.tasks);
-        const taskProgress = tasks.map((task) => {
-          return userData.tasks[task];
-        })
-        const data = { email, name, tasks, taskProgress};
-        this.props.registerUser(data);
+        if (typeof(userData) === 'object') {
+          const email = userData.email;
+          const name = userData.name;
+          const tasks = Object.keys(userData.tasks);
+          const taskProgress = tasks.map((task) => {
+            return userData.tasks[task];
+          })
+          const data = { email, name, tasks, taskProgress};
+          this.props.registerUser(data);
+        }
       })
     }
     

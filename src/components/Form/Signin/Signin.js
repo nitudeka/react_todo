@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
 import Input from '../Input/Input';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { getTasks } from '../../../store/actions';
 import FormValidation from '../FormValidation';
 
 class Register extends Component {
   state = {
     form: {
-      name: {
-        label: 'Your name',
-        type: 'text',
-        placeholder: 'Your name',
-        value: '',
-        validation: {
-          required: true
-        },
-        valid: false,
-        focused: false
-      },
       email: {
         label: 'Your email',
         type: 'text',
@@ -28,7 +19,19 @@ class Register extends Component {
         },
         valid: false,
         focused: false
-      }
+      },
+      password: {
+        label: 'Your Password',
+        type: 'password',
+        placeholder: 'Your password',
+        value: '',
+        validation: {
+          required: true,
+          minLength: 6
+        },
+        valid: false,
+        focused: false
+      },
     },
     errorMessage: null,
     formIsValid: false
@@ -49,6 +52,29 @@ class Register extends Component {
   }
   
   render () {
+    const signinHandler = () => {
+      fetch('http://localhost:3000/login', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          email: this.state.form.email.value,
+          password: this.state.form.password.value
+        })
+      }).then((res) => res.json())
+      .then((userData) => {
+        if (typeof(userData) === 'object') {
+          const email = userData.email;
+          const name = userData.name;
+          const tasks = Object.keys(userData.tasks);
+          const taskProgress = tasks.map((task) => {
+            return userData.tasks[task];
+          })
+          const data = { email, name, tasks, taskProgress};
+          this.props.loginUser(data);
+        }
+      })
+    }
+    
     const form = Object.keys(this.state.form).map(element => {
       return <Input
         valid={this.state.form[element].valid}
@@ -63,14 +89,22 @@ class Register extends Component {
     
     return (
       <div className='form'>
-        <div className='form__head'>
+        <div onClick={() => console.log(this.props.email)} className='form__head'>
           <h3 className='form__heading'>Signin</h3>
         </div>
         {form}
-        <button disabled={!this.state.formIsValid} className='form__btn'>Sign in</button>
+        <button disabled={!this.state.formIsValid} onClick={signinHandler} className='form__btn'>Sign in</button>
       </div>
     )
   }
 }
 
-export default withRouter(Register);
+const mapStateToProps = (state) => ({
+  email: state.email
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  loginUser: (data) => dispatch(getTasks(data))
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Register));
