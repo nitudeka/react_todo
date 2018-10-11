@@ -1,3 +1,5 @@
+let repeatPassword = '';
+
 const validateFormElement = (value, rules) => {
   let isValid = true;
   if (rules.required) {
@@ -9,6 +11,12 @@ const validateFormElement = (value, rules) => {
   if (rules.isEmail) {
     const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     isValid = pattern.test(value) && isValid
+  }
+  if (rules.password) {
+    repeatPassword = value;
+  }
+  if (rules.repeatPassword) {
+    isValid = repeatPassword === value;
   }
   return isValid;
 }

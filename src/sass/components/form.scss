@@ -9,7 +9,6 @@
   box-shadow: 0 0 10px rgba(0,0,0,.3);
   display: flex;
   flex-flow: column;
-  margin: 6px 6px 5rem 6px;
   
   &__btn {
     align-self: center;
@@ -25,7 +24,8 @@
     transition: all .3s;
 
     &:disabled {
-      background-color: rgba($-color-primary, .3);
+      background-color: rgba($-color-primary, .4);
+      cursor: not-allowed;
     }
     
     &:active {
@@ -91,7 +91,8 @@
 
   &__label {
     font-size: 1.6rem;
-    transform: translate(-9.1rem, 1rem);
+    transform: translate(-2.3rem, 1rem);
+    align-self: flex-start;
     color: rgba(0,0,0,.5);
     transition: all .2s;
     opacity: 1;

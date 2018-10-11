@@ -25,8 +25,7 @@ body {
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   display: flex;
-  flex-flow: column;
-  margin: 6px 6px 5rem 6px; }
+  flex-flow: column; }
   .form__btn {
     align-self: center;
     border: none;
@@ -40,7 +39,8 @@ body {
     cursor: pointer;
     transition: all .3s; }
     .form__btn:disabled {
-      background-color: rgba(23, 162, 184, 0.3); }
+      background-color: rgba(23, 162, 184, 0.4);
+      cursor: not-allowed; }
     .form__btn:active {
       background-color: rgba(23, 162, 184, 0.7); }
     .form__btn:hover {
@@ -87,7 +87,8 @@ body {
       visibility: hidden; }
   .form__label {
     font-size: 1.6rem;
-    transform: translate(-9.1rem, 1rem);
+    transform: translate(-2.3rem, 1rem);
+    align-self: flex-start;
     color: rgba(0, 0, 0, 0.5);
     transition: all .2s;
     opacity: 1; }

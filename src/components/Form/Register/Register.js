@@ -19,12 +19,38 @@ class Register extends Component {
       },
       email: {
         label: 'Your email',
-        type: 'text',
+        type: 'email',
         placeholder: 'Your email',
         value: '',
         validation: {
           required: true,
           isEmail: true
+        },
+        valid: false,
+        focused: false
+      },
+      password: {
+        label: 'Your Password (min-6)',
+        type: 'password',
+        placeholder: 'Your password (min-6)',
+        value: '',
+        validation: {
+          required: true,
+          minLength: 6,
+          password: true
+        },
+        valid: false,
+        focused: false
+      },
+      repeatPassword: {
+        label: 'Repeat password',
+        type: 'password',
+        placeholder: 'Repeat password',
+        value: '',
+        validation: {
+          required: true,
+          minLength: 6,
+          repeatPassword: true
         },
         valid: false,
         focused: false
@@ -67,7 +93,7 @@ class Register extends Component {
           <h3 className='form__heading'>Register</h3>
         </div>
         {form}
-        <button className='form__btn'>Register</button>
+        <button disabled={!this.state.formIsValid} className='form__btn'>Register</button>
       </div>
     )
   }

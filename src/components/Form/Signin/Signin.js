@@ -67,7 +67,7 @@ class Register extends Component {
           <h3 className='form__heading'>Signin</h3>
         </div>
         {form}
-        <button className='form__btn'>Sign in</button>
+        <button disabled={!this.state.formIsValid} className='form__btn'>Sign in</button>
       </div>
     )
   }
