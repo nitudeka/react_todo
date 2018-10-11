@@ -1,0 +1,15 @@
+.modal {
+  background-color: #fff;
+  padding: 2rem;
+  transition: all .2s;
+
+  &--show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &--hide {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
