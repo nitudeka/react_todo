@@ -130,3 +130,87 @@ body {
   .nav__heading {
     color: #fff;
     font-size: 2rem; }
+
+.home {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+  .home .task__name {
+    height: 2.4rem; }
+  .home__svg {
+    height: 2rem;
+    margin-left: 1rem;
+    transition: all .2s;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .2s; }
+    .home__svg:hover {
+      transform: translateY(-2px);
+      visibility: visible;
+      opacity: 1; }
+    .home__svg:active {
+      transform: translateY(-1px); }
+    .home__svg--cross {
+      fill: #dc3545; }
+    .home__svg--check {
+      fill: #28a745; }
+    .home__svg-container {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+  .home__task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    margin: 1rem;
+    font-size: 1.6rem;
+    border-radius: 3px;
+    transition: all .2s; }
+    .home__task:hover .home__svg-container .home__svg {
+      visibility: visible;
+      opacity: 1; }
+    .home__task:hover {
+      border: 1px solid transparent;
+      background-color: rgba(23, 162, 184, 0.4);
+      color: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3); }
+  .home__tasks-container {
+    position: absolute;
+    top: 9rem;
+    left: 1rem;
+    bottom: 1rem;
+    border-radius: 4px;
+    right: 1rem;
+    list-style: none;
+    background-color: #f5f5f5;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.6); }
+  .home__header {
+    position: relative;
+    height: 8rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+  .home__heading {
+    position: absolute;
+    background-color: #17a2b8;
+    top: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
+  .home__tasks {
+    position: relative;
+    margin-top: 5rem;
+    border-radius: 4px;
+    width: 45%;
+    height: 80%;
+    background-color: #f0f0f0;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3); }
