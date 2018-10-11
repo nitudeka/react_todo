@@ -137,6 +137,11 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center; }
+  .home__warning {
+    display: block;
+    text-align: center;
+    margin: 3rem auto;
+    font-size: 1.7rem; }
   .home .task__name {
     height: 2.4rem; }
   .home__svg {

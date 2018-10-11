@@ -5,6 +5,13 @@
   justify-content: space-around;
   align-items: center;
 
+  &__warning {
+    display: block;
+    text-align: center;
+    margin: 3rem auto;
+    font-size: 1.7rem;
+  }
+
   .task__name {
     height: 2.4rem;
   }

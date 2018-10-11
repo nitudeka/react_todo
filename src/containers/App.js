@@ -14,7 +14,13 @@ class App extends Component {
         <Navbar />
         <Route path='/signin' render={() => <Login />} />
         <Route path='/register' render={() => <Register />} />
-        <Route path='/' render={() => <Home />} />
+        <Route exact path='/' render={() => {
+          if (this.props.email.length > 0) {
+            return <Home />
+          } else {
+            return <Redirect to='/signin' />
+          }
+        }} />
       </div>
     );
   }
@@ -27,12 +33,3 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({})
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
-
-
-{/* <Route exact path='/' render={() => {
-  if (this.props.email.length > 0) {
-    return <Home />
-  } else {
-    return <Redirect to='/signin' />
-  }
-}} /> */}
