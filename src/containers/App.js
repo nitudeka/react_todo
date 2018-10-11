@@ -13,7 +13,12 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar changeModalState={this.props.toggleModalState} />
-        <Modal onClick={this.props.toggleModalState} modalIsVisible={this.props.modalShown}></Modal>
+        <Modal onClick={this.props.toggleModalState} modalIsVisible={!this.props.modalShown}>
+          <div className='inputs'>
+	          <input onChange={this.props.inputChangeHandler} className='input__input' type='text' placeholder='Enter your new task here!' />
+	          <button onClick={this.addTaskHandler} className='input__button'>Add</button>
+	        </div>
+        </Modal>
         <Route path='/signin' render={() => <Login />} />
         <Route path='/register' render={() => <Register />} />
         <Route exact path='/' render={() => {

@@ -31,6 +31,45 @@ body {
     opacity: 0;
     visibility: hidden; }
 
+.input__input {
+  position: absolute;
+  z-index: 15;
+  top: 2.6rem;
+  left: 30px;
+  right: 25px;
+  width: auto;
+  border: none;
+  padding: 1.4rem 2rem;
+  border-radius: 4px;
+  font-size: 1.7rem;
+  background-color: #e4e4e4;
+  color: rgba(0, 0, 0, 0.8); }
+  .input__input:focus {
+    outline: none;
+    border: none; }
+
+.input__button {
+  position: relative;
+  display: block;
+  height: 10rem;
+  width: 28rem;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1.7rem;
+  cursor: pointer;
+  background-color: rgba(23, 162, 184, 0.8);
+  padding-top: 52px;
+  transition: all .3s; }
+  .input__button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); }
+  .input__button:active {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); }
+  .input__button:focus {
+    outline: none; }
+
 .modal {
   background-color: #fff;
   border-radius: 4px;
@@ -40,7 +79,10 @@ body {
   transform: translate(-50%, -50%);
   padding: 2rem;
   transition: all .2s;
-  z-index: 100; }
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
   .modal--show {
     opacity: 1;
     visibility: visible; }
