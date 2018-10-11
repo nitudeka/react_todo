@@ -64,10 +64,10 @@ class Register extends Component {
     return (
       <div className='form'>
         <div className='form__head'>
-          <h3 className='form__heading'>Register</h3>
+          <h3 className='form__heading'>Signin</h3>
         </div>
         {form}
-        <button className='form__btn'>Register</button>
+        <button className='form__btn'>Sign in</button>
       </div>
     )
   }
