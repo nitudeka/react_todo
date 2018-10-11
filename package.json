@@ -13,6 +13,7 @@
     "redux": "^4.0.0"
   },
   "scripts": {
+    "watch:sass": "node-sass-chokidar ./src/sass/main.scss ./src/index.css -w",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
