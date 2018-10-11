@@ -4,7 +4,7 @@ import Navlink from './Navlink';
 
 const Navbar = (props) => {
 	let navlink = <Navlink route='/signin' link='Signout' />
-	let newTask = <li className='nav__item'>New Task</li>;
+	let newTask = <li onClick={props.changeModalState} className='nav__item'>New Task</li>;
 	if (props.location.pathname === '/signin') {
 		newTask = null;
 		navlink = <Navlink route='/register' link='Register' />

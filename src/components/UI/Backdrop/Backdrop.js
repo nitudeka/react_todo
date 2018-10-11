@@ -9,7 +9,9 @@ const Backdrop = (props) => {
   }
   
   return (
-    <div onClick={props.onClick} className={className.join(' ')}></div>
+    <div onClick={props.onClick} className={className.join(' ')}>
+      {props.children}
+    </div>
   )
 }
 

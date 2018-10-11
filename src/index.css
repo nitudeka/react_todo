@@ -15,6 +15,39 @@ body {
   font-family: Decima,monospace,sans-serif;
   background-color: #f5f5f5; }
 
+.backdrop {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all .2s;
+  z-index: 50; }
+  .backdrop--show {
+    opacity: 1;
+    visibility: visible; }
+  .backdrop--hide {
+    opacity: 0;
+    visibility: hidden; }
+
+.modal {
+  background-color: #fff;
+  border-radius: 4px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  transition: all .2s;
+  z-index: 100; }
+  .modal--show {
+    opacity: 1;
+    visibility: visible; }
+  .modal--hide {
+    opacity: 0;
+    visibility: hidden; }
+
 .form {
   position: fixed;
   top: 50%;

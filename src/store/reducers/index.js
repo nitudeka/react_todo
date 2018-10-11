@@ -2,6 +2,7 @@ const initialState = {
   name: '',
   email: '',
   tasks: [],
+  modalShown: false,
   taskProgress: []
 }
 
@@ -9,6 +10,7 @@ const resetState = {
   name: '',
   email: '',
   tasks: [],
+  modalShown: false,
   taskProgress: []
 }
 
@@ -21,6 +23,11 @@ export default (state=initialState, action={}) => {
         email: action.payload.email,
         tasks: action.payload.tasks,
         taskProgress: action.payload.taskProgress
+      }
+
+    case 'TOGGLE_MODAL':
+      return {
+        ...state, modalShown: !state.modalShown
       }
     
     case 'RESET_STATE':

@@ -10,9 +10,11 @@ const Modal = (props) => {
   }
   
   return (
-    <div className={className.join(' ')}>
-      <Backdrop show={props.modalIsVisible} />
-      {props.children}
+    <div>
+      <Backdrop onClick={props.onClick} show={props.modalIsVisible} />
+      <div className={className.join(' ')}>
+          {props.children}
+      </div>
     </div>
   )
 }
