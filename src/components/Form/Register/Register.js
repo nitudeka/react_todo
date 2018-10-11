@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Input from '../Input/Input';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { getTasks } from '../../../store/actions';
+import Input from '../Input/Input';
 import FormValidation from '../FormValidation';
 
 class Register extends Component {
@@ -75,6 +77,28 @@ class Register extends Component {
   }
   
   render () {
+    const registerHandler = () => {
+      fetch('http://localhost:3000/register', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          name: this.state.form.name.value,
+          email: this.state.form.email.value,
+          password: this.state.form.password.value
+        })
+      }).then((res) => res.json())
+      .then((userData) => {
+        const email = userData.email;
+        const name = userData.name;
+        const tasks = Object.keys(userData.tasks);
+        const taskProgress = tasks.map((task) => {
+          return userData.tasks[task];
+        })
+        const data = { email, name, tasks, taskProgress};
+        this.props.registerUser(data);
+      })
+    }
+    
     const form = Object.keys(this.state.form).map(element => {
       return <Input
         valid={this.state.form[element].valid}
@@ -93,10 +117,18 @@ class Register extends Component {
           <h3 className='form__heading'>Register</h3>
         </div>
         {form}
-        <button disabled={!this.state.formIsValid} className='form__btn'>Register</button>
+        <button disabled={!this.state.formIsValid} onClick={registerHandler} className='form__btn'>Register</button>
       </div>
     )
   }
 }
 
-export default withRouter(Register);
+const mapStateToProps = (state) => ({
+  email: state.email
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  registerUser: (data) => dispatch(getTasks(data)) 
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Register));
