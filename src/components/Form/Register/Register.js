@@ -97,6 +97,7 @@ class Register extends Component {
           })
           const data = { email, name, tasks, taskProgress};
           this.props.registerUser(data);
+          this.props.history.push('/');
         }
       })
     }

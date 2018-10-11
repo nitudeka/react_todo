@@ -71,6 +71,7 @@ class Register extends Component {
           })
           const data = { email, name, tasks, taskProgress};
           this.props.loginUser(data);
+          this.props.history.push('/');
         }
       })
     }
