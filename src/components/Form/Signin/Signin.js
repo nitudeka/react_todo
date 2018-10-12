@@ -53,6 +53,7 @@ class Register extends Component {
   
   render () {
     const signinHandler = () => {
+      this.props.toggleSpinner();
       fetch('http://localhost:3000/login', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
@@ -62,6 +63,7 @@ class Register extends Component {
         })
       }).then((res) => res.json())
       .then((userData) => {
+        this.props.toggleSpinner();
         if (typeof(userData) === 'object') {
           const email = userData.email;
           const name = userData.name;
@@ -105,7 +107,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  loginUser: (data) => dispatch(getTasks(data))
+  loginUser: (data) => dispatch(getTasks(data)),
+  toggleSpinner: () => dispatch({ type: 'CHANGE_SPINNER_STATE' })
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Register));

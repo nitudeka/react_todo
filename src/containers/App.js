@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Route, Redirect } from 'react-router-dom';
 import { getInputChange, newTask } from '../store/actions';
+import Spinner from '../components/UI/Spinner/Spinner';
 import Register from '../components/Form/Register/Register';
 import Navbar from '../components/Navigation/Navbar';
 import Login from '../components/Form/Signin/Signin';
@@ -20,6 +21,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar changeModalState={this.props.toggleModalState} />
+        <Spinner visible={this.props.isPending} />
         <Modal onClick={this.props.toggleModalState} modalIsVisible={this.props.modalShown}>
           <div className='inputs'>
 	          <input onChange={this.props.getInputChange} className='input__input' type='text' placeholder='Enter your new task here!' />
@@ -41,6 +43,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  isPending: state.isPending,
   inputValue: state.inputValue,
   email: state.email,
   modalShown: state.modalShown

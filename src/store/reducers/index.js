@@ -4,7 +4,8 @@ const initialState = {
   email: '',
   tasks: [],
   modalShown: false,
-  taskProgress: []
+  taskProgress: [],
+  isPending: false
 }
 
 const resetState = {
@@ -13,7 +14,8 @@ const resetState = {
   email: '',
   tasks: [],
   modalShown: false,
-  taskProgress: []
+  taskProgress: [],
+  isPending: false
 }
 
 export default (state=initialState, action={}) => {
@@ -21,6 +23,9 @@ export default (state=initialState, action={}) => {
     case 'GET_INPUT_CHANGE':
       return { ...state, inputValue: action.payload };
     
+    case 'CHANGE_SPINNER_STATE':
+      return { ...state, isPending: !state.isPending };
+      
     case 'GET_TASKS':
       return {
         ...state,
