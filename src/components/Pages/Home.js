@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { completedTask } from '../../store/actions';
+import { deleteTask, completedTask } from '../../store/actions';
 import Svg from '../Svg';
 
 const Home = (props) => {
@@ -12,7 +12,7 @@ const Home = (props) => {
           <span className='task__name'>{task}</span>
           <div className='home__svg-container'>
             <Svg onClick={() => props.completeTask(props.email, task)} name='check' className='home__svg home__svg--check' />
-            <Svg name='cross' className='home__svg home__svg--cross' />
+            <Svg onClick={() => props.deleteTask(props.email, task)} name='cross' className='home__svg home__svg--cross' />
           </div>
         </li>
       )
@@ -59,7 +59,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  completeTask: (email, task) => completedTask(dispatch, email, task)
+  completeTask: (email, task) => completedTask(dispatch, email, task),
+  deleteTask: (email, task) => deleteTask(dispatch, email, task)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
