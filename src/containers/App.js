@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar changeModalState={this.props.toggleModalState} />
-        <Modal onClick={this.props.toggleModalState} modalIsVisible={!this.props.modalShown}>
+        <Modal onClick={this.props.toggleModalState} modalIsVisible={this.props.modalShown}>
           <div className='inputs'>
 	          <input onChange={this.props.getInputChange} className='input__input' type='text' placeholder='Enter your new task here!' />
 	          <button onClick={this.addTaskHandler} className='input__button'>Add</button>

@@ -13,6 +13,24 @@ export const getTasks = (data) => ({
   }
 })
 
+export const completedTask = (dispatch, email, task) => {
+  dispatch({ type: 'GET_TASKS_PENDING' });
+  fetch('http://localhost:3000/taskCompleted', {
+    method: 'post',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      email: email,
+      task: task
+    })
+  }).then((res) => res.json())
+  .then((data) => {
+    if (typeof(data) === 'object') {
+      dispatch({ type: 'GET_TASKS_SUCCESS', payload: data });
+    }
+  })
+  .catch(err => dispatch({ type: 'GET_TASKS_FAILED', payload: err }));
+}
+
 export const newTask = (dispatch, email, task) => {
   dispatch({ type: 'GET_TASKS_PENDING' });
   fetch('http://localhost:3000/newTask', {
