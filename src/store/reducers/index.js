@@ -1,3 +1,14 @@
+import {
+  GET_INPUT_CHANGE,
+  CHANGE_SPINNER_STATE,
+  GET_TASKS,
+  TOGGLE_MODAL,
+  RESET_STATE,
+  GET_TASKS_PENDING,
+  GET_TASKS_SUCCESS,
+  GET_TASKS_FAILED
+} from '../constants';
+
 const initialState = {
   name: '',
   inputValue: '',
@@ -20,13 +31,13 @@ const resetState = {
 
 export default (state=initialState, action={}) => {
   switch (action.type) {
-    case 'GET_INPUT_CHANGE':
+    case GET_INPUT_CHANGE:
       return { ...state, inputValue: action.payload };
     
-    case 'CHANGE_SPINNER_STATE':
+    case CHANGE_SPINNER_STATE:
       return { ...state, isPending: !state.isPending };
       
-    case 'GET_TASKS':
+    case GET_TASKS:
       return {
         ...state,
         name: action.payload.name,
@@ -35,25 +46,25 @@ export default (state=initialState, action={}) => {
         taskProgress: action.payload.taskProgress
       }
 
-    case 'TOGGLE_MODAL':
+    case TOGGLE_MODAL:
       return {
         ...state, modalShown: !state.modalShown
       }
     
-    case 'RESET_STATE':
+    case RESET_STATE:
       return { resetState };
 
-    case 'GET_TASKS_PENDING':
+    case GET_TASKS_PENDING:
       return { ...state, isPending: true };
 
-    case 'GET_TASKS_SUCCESS':
+    case GET_TASKS_SUCCESS:
       const tasks = Object.keys(action.payload);
       const taskProgress = tasks.map((task) => {
         return action.payload[task];
       })
       return { ...state, isPending: false, tasks: tasks, taskProgress: taskProgress };
 
-    case 'GET_TASKS_FAILED':
+    case GET_TASKS_FAILED:
       return { ...state, isPending: false, err: action.payload };
 
     default: return state;

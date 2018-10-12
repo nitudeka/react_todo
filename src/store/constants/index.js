@@ -1,0 +1,13 @@
+export const GET_INPUT_CHANGE = 'GET_INPUT_CHANGE';
+
+export const CHANGE_SPINNER_STATE = 'CHANGE_SPINNER_STATE';
+
+export const RESET_STATE = 'RESET_STATE';
+
+export const TOGGLE_MODAL = 'TOGGLE_MODAL';
+
+export const GET_TASKS = 'GET_TASKS';
+
+export const GET_TASKS_PENDING = 'GET_TASKS_PENDING';
+export const GET_TASKS_SUCCESS = 'GET_TASKS_SUCCESS';
+export const GET_TASKS_FAILED = 'GET_TASKS_FAILED';
