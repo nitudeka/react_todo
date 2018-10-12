@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Input from '../Input/Input';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getTasks } from '../../../store/actions';
+import { toggleSpinner, getTasks } from '../../../store/actions';
 import FormValidation from '../FormValidation';
 
 class Register extends Component {
@@ -108,7 +108,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   loginUser: (data) => dispatch(getTasks(data)),
-  toggleSpinner: () => dispatch({ type: 'CHANGE_SPINNER_STATE' })
+  toggleSpinner: () => dispatch(toggleSpinner())
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Register));

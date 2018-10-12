@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getTasks } from '../../../store/actions';
+import { toggleSpinner, getTasks } from '../../../store/actions';
 import Input from '../Input/Input';
 import FormValidation from '../FormValidation';
 
@@ -134,7 +134,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   registerUser: (data) => dispatch(getTasks(data)),
-  toggleSpinner: () => dispatch({ type: 'CHANGE_SPINNER_STATE' })
+  toggleSpinner: () => dispatch(toggleSpinner())
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Register));

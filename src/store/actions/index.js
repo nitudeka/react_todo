@@ -1,15 +1,30 @@
 import {
   GET_INPUT_CHANGE,
+  CHANGE_SPINNER_STATE,
   GET_TASKS,
+  TOGGLE_MODAL,
+  RESET_STATE,
   GET_TASKS_PENDING,
   GET_TASKS_SUCCESS,
   GET_TASKS_FAILED
 } from '../constants';
 
+export const toggleSpinner = () => ({
+  type: CHANGE_SPINNER_STATE
+});
+
+export const toggleModal = () => ({
+  type: TOGGLE_MODAL
+});
+
+export const resetState = () => ({
+  type: RESET_STATE
+});
+
 export const getInputChange = (text) => ({
   type: GET_INPUT_CHANGE,
   payload: text
-})
+});
 
 export const getTasks = (data) => ({
   type: GET_TASKS,
@@ -19,7 +34,7 @@ export const getTasks = (data) => ({
     tasks: data.tasks,
     taskProgress: data.taskProgress
   }
-})
+});
 
 export const completedTask = (dispatch, email, task) => {
   dispatch({ type: GET_TASKS_PENDING });
@@ -37,7 +52,7 @@ export const completedTask = (dispatch, email, task) => {
     }
   })
   .catch(err => dispatch({ type: GET_TASKS_FAILED, payload: err }));
-}
+};
 
 export const deleteTask = (dispatch, email, task) => {
   dispatch({ type: GET_TASKS_PENDING });
@@ -55,7 +70,7 @@ export const deleteTask = (dispatch, email, task) => {
     }
   })
   .catch(err => dispatch({ type: GET_TASKS_FAILED, payload: err }));
-}
+};
 
 export const newTask = (dispatch, email, task) => {
   dispatch({ type: GET_TASKS_PENDING });
@@ -73,4 +88,4 @@ export const newTask = (dispatch, email, task) => {
     }
   })
   .catch(err => dispatch({ type: GET_TASKS_FAILED, payload: err }));
-}
+};

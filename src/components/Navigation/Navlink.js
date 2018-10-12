@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { resetState } from '../../store/actions'
 import { Link } from 'react-router-dom';
 
 const Navlink = (props) => {
@@ -11,7 +12,7 @@ const Navlink = (props) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  resetState: () => dispatch({ type: 'RESET_STATE' })
+  resetState: () => dispatch(resetState())
 })
 
 export default connect(null, mapDispatchToProps)(Navlink);
