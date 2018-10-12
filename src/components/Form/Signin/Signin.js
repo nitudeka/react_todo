@@ -54,7 +54,7 @@ class Register extends Component {
   render () {
     const signinHandler = () => {
       this.props.toggleSpinner();
-      fetch('http://localhost:3000/login', {
+      fetch('https://reacttodoapi.herokuapp.com/login', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -92,7 +92,7 @@ class Register extends Component {
     
     return (
       <div className='form'>
-        <div onClick={() => console.log(this.props.email)} className='form__head'>
+        <div className='form__head'>
           <h3 className='form__heading'>Signin</h3>
         </div>
         {form}
