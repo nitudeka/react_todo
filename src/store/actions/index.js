@@ -15,7 +15,7 @@ export const getTasks = (data) => ({
 
 export const completedTask = (dispatch, email, task) => {
   dispatch({ type: 'GET_TASKS_PENDING' });
-  fetch('http://localhost:3000/taskCompleted', {
+  fetch('https://reacttodoapi.herokuapp.com/taskCompleted', {
     method: 'post',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -33,7 +33,7 @@ export const completedTask = (dispatch, email, task) => {
 
 export const deleteTask = (dispatch, email, task) => {
   dispatch({ type: 'GET_TASKS_PENDING' });
-  fetch('http://localhost:3000/deleteTask', {
+  fetch('https://reacttodoapi.herokuapp.com/deleteTask', {
     method: 'post',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -51,7 +51,7 @@ export const deleteTask = (dispatch, email, task) => {
 
 export const newTask = (dispatch, email, task) => {
   dispatch({ type: 'GET_TASKS_PENDING' });
-  fetch('http://localhost:3000/newTask', {
+  fetch('https://reacttodoapi.herokuapp.com/newTask', {
     method: 'post',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
