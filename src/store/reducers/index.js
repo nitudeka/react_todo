@@ -1,5 +1,6 @@
 const initialState = {
   name: '',
+  inputValue: '',
   email: '',
   tasks: [],
   modalShown: false,
@@ -8,6 +9,7 @@ const initialState = {
 
 const resetState = {
   name: '',
+  inputValue: '',
   email: '',
   tasks: [],
   modalShown: false,
@@ -16,6 +18,9 @@ const resetState = {
 
 export default (state=initialState, action={}) => {
   switch (action.type) {
+    case 'GET_INPUT_CHANGE':
+      return { ...state, inputValue: action.payload };
+    
     case 'GET_TASKS':
       return {
         ...state,
@@ -32,6 +37,19 @@ export default (state=initialState, action={}) => {
     
     case 'RESET_STATE':
       return { resetState };
+
+    case 'GET_TASKS_PENDING':
+      return { ...state, isPending: true };
+
+    case 'GET_TASKS_SUCCESS':
+      const tasks = Object.keys(action.payload);
+      const taskProgress = tasks.map((task) => {
+        return action.payload[task];
+      })
+      return { ...state, isPending: false, tasks: tasks, taskProgress: taskProgress };
+
+    case 'GET_TASKS_FAILED':
+      return { ...state, isPending: false, err: action.payload };
 
     default: return state;
   }
