@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteTask, completedTask } from '../../store/actions';
+import { taskHandler } from '../../store/actions';
 import Svg from '../Svg';
 
 const Home = (props) => {
@@ -59,8 +59,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  completeTask: (email, task) => completedTask(dispatch, email, task),
-  deleteTask: (email, task) => deleteTask(dispatch, email, task)
+  completeTask: (email, task) => taskHandler(dispatch, email, task, 'taskCompleted'),
+  deleteTask: (email, task) => taskHandler(dispatch, email, task, 'deleteTask')
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

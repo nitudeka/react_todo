@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Route, Redirect } from 'react-router-dom';
-import { getInputChange, newTask } from '../store/actions';
+import { toggleModal, getInputChange, taskHandler } from '../store/actions';
 import Spinner from '../components/UI/Spinner/Spinner';
 import Register from '../components/Form/Register/Register';
 import Navbar from '../components/Navigation/Navbar';
@@ -51,8 +51,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getInputChange: (event) => dispatch(getInputChange(event.target.value)),
-  toggleModalState: () => dispatch({ type: 'TOGGLE_MODAL' }),
-  addNewTask: (email, task) => newTask(dispatch, email, task)
+  toggleModalState: () => dispatch(toggleModal()),
+  addNewTask: (email, task) => taskHandler(dispatch, email, task, 'newTask')
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
