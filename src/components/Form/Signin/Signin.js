@@ -54,7 +54,7 @@ class Register extends Component {
   render () {
     const signinHandler = () => {
       this.props.toggleSpinner();
-      fetch('https://reacttodoapi.herokuapp.com/login', {
+      fetch('http://localhost:3000/login', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -62,17 +62,17 @@ class Register extends Component {
           password: this.state.form.password.value
         })
       }).then((res) => res.json())
-      .then((userData) => {
+      .then((data) => {
         this.props.toggleSpinner();
-        if (typeof(userData) === 'object') {
-          const email = userData.email;
-          const name = userData.name;
-          const tasks = Object.keys(userData.tasks);
+        if (typeof(data) === 'object') {
+          const email = data.userData.email;
+          const name = data.userData.name;
+          const tasks = Object.keys(data.userData.tasks);
           const taskProgress = tasks.map((task) => {
-            return userData.tasks[task];
+            return data.userData.tasks[task];
           })
-          const data = { email, name, tasks, taskProgress};
-          this.props.loginUser(data);
+          const mainData = { email, name, tasks, taskProgress};
+          this.props.loginUser(mainData);
           this.props.history.push('/');
         }
       })
