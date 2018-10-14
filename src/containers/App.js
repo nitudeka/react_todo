@@ -34,8 +34,20 @@ class App extends Component {
 	          <button onClick={this.addTaskHandler} className='input__button'>Add</button>
 	        </div>
         </Modal>
-        <Route path='/signin' render={() => <Login />} />
-        <Route path='/register' render={() => <Register />} />
+        <Route path='/signin' render={() => {
+          if (window.localStorage.getItem('token') === null) {
+            return <Login />
+          } else {
+            return <Redirect to='/' />
+          }
+        }} />
+        <Route path='/register' render={() => {
+          if (window.localStorage.getItem('token') === null) {
+            return <Register />
+          } else {
+            return <Redirect to='/' />
+          }
+        }} />
         <Route exact path='/' render={() => {
           if (this.props.email.length > 0 || window.localStorage.getItem('token') !== null) {
             return <Home />
