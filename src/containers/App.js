@@ -31,7 +31,7 @@ class App extends Component {
         <Route path='/signin' render={() => <Login />} />
         <Route path='/register' render={() => <Register />} />
         <Route exact path='/' render={() => {
-          if (this.props.email.length > 0) {
+          if (this.props.email.length > 0 || window.localStorage.getItem('token') !== null) {
             return <Home />
           } else {
             return <Redirect to='/signin' />

@@ -50,13 +50,21 @@ class Register extends Component {
     })
     this.setState({form: updatedState, formIsValid: formIsValid});
   }
+
+  saveToken = (token) => {
+    window.localStorage.setItem('token', token);
+  }
   
   render () {
     const signinHandler = () => {
       this.props.toggleSpinner();
+      const tokens = window.localStorage.getItem('token') !== null ? window.localStorage.getItem('token') : false ;
       fetch('http://localhost:3000/login', {
         method: 'post',
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': tokens
+        },
         body: JSON.stringify({
           email: this.state.form.email.value,
           password: this.state.form.password.value
@@ -73,6 +81,9 @@ class Register extends Component {
           })
           const mainData = { email, name, tasks, taskProgress};
           this.props.loginUser(mainData);
+          if (data.token) {
+            this.saveToken(data.token.token);
+          }
           this.props.history.push('/');
         }
       })

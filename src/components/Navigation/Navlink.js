@@ -4,9 +4,14 @@ import { resetState } from '../../store/actions'
 import { Link } from 'react-router-dom';
 
 const Navlink = (props) => {
+	const onClick = () => {
+		props.resetState();
+		window.localStorage.clear();
+	}
+
   return (
     <Link style={{textDecoration: 'none'}} to={props.route}>
-      <li onClick={props.resetState} className='nav__item'>{props.link}</li>
+      <li onClick={onClick} className='nav__item'>{props.link}</li>
     </Link>
   )
 }
