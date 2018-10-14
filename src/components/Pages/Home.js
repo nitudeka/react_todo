@@ -36,17 +36,17 @@ const Home = (props) => {
         <div className='home__header'>
           <span className='home__heading'>Your tasks</span>
         </div>
-        <ul className='home__tasks-container'>
+        <ol className='home__tasks-container'>
           {tasks}
-        </ul>
+        </ol>
       </div>
       <div className='home__tasks'>
         <div className='home__header'>
           <span className='home__heading'>Task Progress</span>
         </div>
-        <ul className='home__tasks-container'>
+        <ol className='home__tasks-container'>
           {taskProgress}
-        </ul>
+        </ol>
       </div>
     </div>
   )
