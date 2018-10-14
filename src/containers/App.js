@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Route, Redirect } from 'react-router-dom';
 import { toggleModal, getInputChange, taskHandler } from '../store/actions';
+import Routes from '../components/Routes/Routes';
 import Spinner from '../components/UI/Spinner/Spinner';
-import Register from '../components/Form/Register/Register';
 import Navbar from '../components/Navigation/Navbar';
-import Login from '../components/Form/Signin/Signin';
-import Home from '../components/Pages/Home';
 import Modal from '../components/UI/Modal/Modal';
 
 class App extends Component {
@@ -34,27 +31,7 @@ class App extends Component {
 	          <button onClick={this.addTaskHandler} className='input__button'>Add</button>
 	        </div>
         </Modal>
-        <Route path='/signin' render={() => {
-          if (window.localStorage.getItem('token') === null) {
-            return <Login />
-          } else {
-            return <Redirect to='/' />
-          }
-        }} />
-        <Route path='/register' render={() => {
-          if (window.localStorage.getItem('token') === null) {
-            return <Register />
-          } else {
-            return <Redirect to='/' />
-          }
-        }} />
-        <Route exact path='/' render={() => {
-          if (this.props.email.length > 0 || window.localStorage.getItem('token') !== null) {
-            return <Home />
-          } else {
-            return <Redirect to='/signin' />
-          }
-        }} />
+        <Routes email={this.props.email} />
       </div>
     );
   }
