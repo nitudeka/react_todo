@@ -59,7 +59,7 @@ class Register extends Component {
     const signinHandler = () => {
       this.props.toggleSpinner();
       const tokens = window.localStorage.getItem('token') !== null ? window.localStorage.getItem('token') : false ;
-      fetch('http://localhost:3000/login', {
+      fetch('https://reacttodoapi.herokuapp.com/login', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',

@@ -83,7 +83,7 @@ class Register extends Component {
   render () {
     const registerHandler = () => {
       this.props.toggleSpinner();
-      fetch('http://localhost:3000/register', {
+      fetch('https://reacttodoapi.herokuapp.com/register', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({

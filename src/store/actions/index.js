@@ -38,7 +38,7 @@ export const getTasks = (data) => ({
 
 export const taskHandler = (dispatch, email, task, url) => {
   dispatch({ type: GET_TASKS_PENDING });
-  fetch(`http://localhost:3000/${url}`, {
+  fetch(`https://reacttodoapi.herokuapp.com/${url}`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
