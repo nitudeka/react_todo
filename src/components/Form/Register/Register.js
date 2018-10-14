@@ -75,11 +75,15 @@ class Register extends Component {
     })
     this.setState({form: updatedState, formIsValid: formIsValid});
   }
+
+  saveToken = (token) => {
+    window.localStorage.setItem('token', token);
+  }
   
   render () {
     const registerHandler = () => {
       this.props.toggleSpinner();
-      fetch('https://reacttodoapi.herokuapp.com/register', {
+      fetch('http://localhost:3000/register', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -91,14 +95,15 @@ class Register extends Component {
       .then((userData) => {
         this.props.toggleSpinner();
         if (typeof(userData) === 'object') {
-          const email = userData.email;
-          const name = userData.name;
-          const tasks = Object.keys(userData.tasks);
+          const email = userData.userData.email;
+          const name = userData.userData.name;
+          const tasks = Object.keys(userData.userData.tasks);
           const taskProgress = tasks.map((task) => {
-            return userData.tasks[task];
+            return userData.userData.tasks[task];
           })
           const data = { email, name, tasks, taskProgress};
           this.props.registerUser(data);
+          this.saveToken(userData.token.token);
           this.props.history.push('/');
         }
       })

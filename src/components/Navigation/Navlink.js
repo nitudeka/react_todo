@@ -6,7 +6,13 @@ import { Link } from 'react-router-dom';
 const Navlink = (props) => {
 	const onClick = () => {
 		props.resetState();
-		window.localStorage.clear();
+    fetch('http://localhost:3000/signout', {
+      mathod: 'get',
+      headers: {
+        authorization: window.localStorage.getItem('token')
+      }
+    })
+    window.localStorage.clear();
 	}
 
   return (

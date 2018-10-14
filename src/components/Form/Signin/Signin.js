@@ -107,7 +107,7 @@ class Register extends Component {
           <h3 className='form__heading'>Signin</h3>
         </div>
         {form}
-        <button disabled={!this.state.formIsValid} onClick={signinHandler} className='form__btn'>Sign in</button>
+        <button onClick={signinHandler} className='form__btn'>Sign in</button>
       </div>
     )
   }
@@ -123,3 +123,5 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Register));
+
+// disabled={!this.state.formIsValid}

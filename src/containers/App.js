@@ -16,6 +16,12 @@ class App extends Component {
       this.props.addNewTask(this.props.email, this.props.inputValue);
     }
   }
+
+  componentDidMount () {
+    if (window.localStorage.getItem('token')) {
+      this.props.getTasks();
+    }
+  }
   
   render() {
     return (
@@ -51,6 +57,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getInputChange: (event) => dispatch(getInputChange(event.target.value)),
+  getTasks: () => taskHandler(dispatch, null, null, 'tasks'),
   toggleModalState: () => dispatch(toggleModal()),
   addNewTask: (email, task) => taskHandler(dispatch, email, task, 'newTask')
 })
