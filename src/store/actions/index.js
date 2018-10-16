@@ -36,7 +36,7 @@ export const getTasks = (data) => ({
   }
 });
 
-export const taskHandler = (dispatch, email, task, url) => {
+export const taskHandler = (dispatch, task, url) => {
   dispatch({ type: GET_TASKS_PENDING });
   fetch(`http://localhost:3000/${url}`, {
     method: 'post',

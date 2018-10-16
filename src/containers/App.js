@@ -10,7 +10,7 @@ import Modal from '../components/UI/Modal/Modal';
 class App extends Component {
   addTaskHandler = () => {
     if (this.props.inputValue.length > 0) {
-      this.props.addNewTask(this.props.email, this.props.inputValue);
+      this.props.addNewTask(this.props.inputValue);
     }
   }
 
@@ -31,7 +31,7 @@ class App extends Component {
 	          <button onClick={this.addTaskHandler} className='input__button'>Add</button>
 	        </div>
         </Modal>
-        <Routes email={this.props.email} />
+        <Routes />
       </div>
     );
   }
@@ -40,15 +40,14 @@ class App extends Component {
 const mapStateToProps = (state) => ({
   isPending: state.isPending,
   inputValue: state.inputValue,
-  email: state.email,
   modalShown: state.modalShown
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getInputChange: (event) => dispatch(getInputChange(event.target.value)),
-  getTasks: () => taskHandler(dispatch, null, null, 'tasks'),
+  getTasks: () => taskHandler(dispatch, null, 'tasks'),
   toggleModalState: () => dispatch(toggleModal()),
-  addNewTask: (email, task) => taskHandler(dispatch, email, task, 'newTask')
+  addNewTask: (task) => taskHandler(dispatch, task, 'newTask')
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

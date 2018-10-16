@@ -22,7 +22,7 @@ const Routes = (props) => {
         }
       }} />
       <Route exact path='/' render={() => {
-        if (props.email.length > 0 || window.localStorage.getItem('token') !== null) {
+        if (window.localStorage.getItem('token') !== null) {
           return <Home />
         } else {
           return <Redirect to='/signin' />

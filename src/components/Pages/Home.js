@@ -11,8 +11,8 @@ const Home = (props) => {
         <li className='home__task' key={task}>
           <span className='task__name'>{task}</span>
           <div className='home__svg-container'>
-            <Svg onClick={() => props.completeTask(props.email, task)} name='check' className='home__svg home__svg--check' />
-            <Svg onClick={() => props.deleteTask(props.email, task)} name='cross' className='home__svg home__svg--cross' />
+            <Svg onClick={() => props.completeTask(task)} name='check' className='home__svg home__svg--check' />
+            <Svg onClick={() => props.deleteTask(task)} name='cross' className='home__svg home__svg--cross' />
           </div>
         </li>
       )
@@ -53,14 +53,13 @@ const Home = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  email: state.email,
   tasks: state.tasks,
   taskProgress: state.taskProgress
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  completeTask: (email, task) => taskHandler(dispatch, email, task, 'taskCompleted'),
-  deleteTask: (email, task) => taskHandler(dispatch, email, task, 'deleteTask')
+  completeTask: (task) => taskHandler(dispatch, null, task, 'taskCompleted'),
+  deleteTask: (task) => taskHandler(dispatch, null, task, 'deleteTask')
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
