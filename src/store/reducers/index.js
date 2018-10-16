@@ -3,24 +3,12 @@ import {
   CHANGE_SPINNER_STATE,
   GET_TASKS,
   TOGGLE_MODAL,
-  RESET_STATE,
   GET_TASKS_PENDING,
   GET_TASKS_SUCCESS,
   GET_TASKS_FAILED
 } from '../constants';
 
 const initialState = {
-  name: '',
-  inputValue: '',
-  email: '',
-  tasks: [],
-  modalShown: false,
-  taskProgress: [],
-  isPending: false,
-  errMsg: false
-}
-
-const resetState = {
   name: '',
   inputValue: '',
   email: '',
@@ -52,9 +40,6 @@ export default (state=initialState, action={}) => {
       return {
         ...state, modalShown: !state.modalShown
       }
-    
-    case RESET_STATE:
-      return { resetState };
 
     case GET_TASKS_PENDING:
       return { ...state, isPending: true };

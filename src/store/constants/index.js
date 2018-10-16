@@ -2,8 +2,6 @@ export const GET_INPUT_CHANGE = 'GET_INPUT_CHANGE';
 
 export const CHANGE_SPINNER_STATE = 'CHANGE_SPINNER_STATE';
 
-export const RESET_STATE = 'RESET_STATE';
-
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 
 export const GET_TASKS = 'GET_TASKS';

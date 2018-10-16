@@ -13,12 +13,6 @@ class App extends Component {
       this.props.addNewTask(this.props.inputValue);
     }
   }
-
-  componentDidMount () {
-    if (window.localStorage.getItem('token')) {
-      this.props.getTasks();
-    }
-  }
   
   render() {
     return (

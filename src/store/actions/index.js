@@ -3,7 +3,6 @@ import {
   CHANGE_SPINNER_STATE,
   GET_TASKS,
   TOGGLE_MODAL,
-  RESET_STATE,
   GET_TASKS_PENDING,
   GET_TASKS_SUCCESS,
   GET_TASKS_FAILED
@@ -15,10 +14,6 @@ export const toggleSpinner = () => ({
 
 export const toggleModal = () => ({
   type: TOGGLE_MODAL
-});
-
-export const resetState = () => ({
-  type: RESET_STATE
 });
 
 export const getInputChange = (text) => ({
