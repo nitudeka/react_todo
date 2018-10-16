@@ -77,7 +77,7 @@ class Register extends Component {
           </div>
         </div>
         {form}
-        <button disabled={!this.state.formIsValid} onClick={signinHandler} className='form__btn'>Sign in</button>
+        <button disabled={!this.state.formIsValid} onClick={signinHandler} className='form__btn'>I am back!</button>
       </div>
     )
   }

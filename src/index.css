@@ -121,7 +121,6 @@ button, input {
     background-color: rgba(23, 162, 184, 0.9);
     color: #fff;
     text-align: center;
-    text-transform: uppercase;
     border-radius: 3px;
     cursor: pointer;
     transition: all .3s; }
