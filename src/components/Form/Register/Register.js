@@ -96,7 +96,10 @@ class Register extends Component {
     return (
       <div className='form'>
         <div className='form__head'>
-          <h3 className='form__heading'>Register</h3>
+          <div className='form__heading'>
+            <span className='form__heading--main'>Register</span>
+            <span className='form__heading--sub'>{this.props.errMsg}</span>
+          </div>
         </div>
         {form}
         <button disabled={!this.state.formIsValid} onClick={registerHandler} className='form__btn'>Register</button>
@@ -106,7 +109,8 @@ class Register extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  email: state.email
+  email: state.email,
+  errMsg: state.errMsg
 });
 
 const mapDispatchToProps = (dispatch) => ({
