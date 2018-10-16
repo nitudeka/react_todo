@@ -5,7 +5,10 @@ import {
   TOGGLE_MODAL,
   GET_TASKS_PENDING,
   GET_TASKS_SUCCESS,
-  GET_TASKS_FAILED
+  GET_TASKS_FAILED,
+  AUTHENTICATING_USER_PENDING,
+  AUTHENTICATING_USER_SUCCESS,
+  AUTHENTICATING_USER_FAILED
 } from '../constants';
 
 const initialState = {
@@ -54,13 +57,13 @@ export default (state=initialState, action={}) => {
     case GET_TASKS_FAILED:
       return { ...state, isPending: false, err: action.payload };
     
-    case 'SIGNINT_USER_PENDING':
+    case AUTHENTICATING_USER_PENDING:
       return { ...state, isPending: true };
       
-    case 'SIGNINT_USER_SUCCESS':
+    case AUTHENTICATING_USER_SUCCESS:
       return { ...state, isPending: false }
 
-    case 'SIGNINT_USER_FAILED':
+    case AUTHENTICATING_USER_FAILED:
       return { ...state, isPending: false, errMsg: action.payload }
       
     default: return state;

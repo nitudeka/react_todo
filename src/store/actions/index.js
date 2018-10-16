@@ -5,7 +5,10 @@ import {
   TOGGLE_MODAL,
   GET_TASKS_PENDING,
   GET_TASKS_SUCCESS,
-  GET_TASKS_FAILED
+  GET_TASKS_FAILED,
+  AUTHENTICATING_USER_PENDING,
+  AUTHENTICATING_USER_SUCCESS,
+  AUTHENTICATING_USER_FAILED
 } from '../constants';
 
 export const toggleSpinner = () => ({
@@ -53,7 +56,7 @@ export const taskHandler = (dispatch, task, url) => {
 
 export const authHandler = (email, password, name, url) => {
   return (dispatch) => {
-    dispatch({ type: 'SIGNINT_USER_PENDING' });
+    dispatch({ type: AUTHENTICATING_USER_PENDING });
     fetch(`http://localhost:3000/${url}`, {
       method: 'post',
       headers: { 'content-type': 'application/json' },
@@ -62,13 +65,13 @@ export const authHandler = (email, password, name, url) => {
     .then((token) => {
       if (typeof(token) === 'object') {
         localStorage.setItem('token', token.token);
-        dispatch({ type: 'SIGNINT_USER_SUCCESS' });
+        dispatch({ type: AUTHENTICATING_USER_SUCCESS });
       } else {
-        dispatch({ type: 'SIGNINT_USER_FAILED', payload: token })
+        dispatch({ type: AUTHENTICATING_USER_FAILED, payload: token })
       }
     })
     .catch((err) => {
-      dispatch({ type: 'SIGNINT_USER_FAILED'})
+      dispatch({ type: AUTHENTICATING_USER_FAILED})
     })
   }
 }
