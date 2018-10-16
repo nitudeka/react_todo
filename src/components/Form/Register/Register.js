@@ -76,10 +76,6 @@ class Register extends Component {
     this.setState({form: updatedState, formIsValid: formIsValid});
   }
 
-  saveToken = (token) => {
-    window.localStorage.setItem('token', token);
-  }
-  
   render () {
     const registerHandler = () => {
       this.props.signinHandler(this.state.form.email.value, this.state.form.password.value, this.state.form.name.value);
@@ -115,8 +111,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   signinHandler: (email, password, name) => dispatch(signinHandler(email, password, name, 'register')),
-  registerUser: (data) => dispatch(getTasks(data)),
-  toggleSpinner: () => dispatch(toggleSpinner())
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Register));
