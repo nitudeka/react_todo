@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { signinHandler, toggleSpinner, getTasks } from '../../../store/actions';
+import { authHandler } from '../../../store/actions';
 import Input from '../Input/Input';
 import FormValidation from '../FormValidation';
 
@@ -110,7 +110,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  signinHandler: (email, password, name) => dispatch(signinHandler(email, password, name, 'register')),
+  signinHandler: (email, password, name) => dispatch(authHandler(email, password, name, 'register')),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Register));

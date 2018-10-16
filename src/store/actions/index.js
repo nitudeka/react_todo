@@ -51,7 +51,7 @@ export const taskHandler = (dispatch, task, url) => {
   .catch(err => dispatch({ type: GET_TASKS_FAILED, payload: err }));
 };
 
-export const signinHandler = (email, password, name, url) => {
+export const authHandler = (email, password, name, url) => {
   return (dispatch) => {
     dispatch({ type: 'SIGNINT_USER_PENDING' });
     fetch(`http://localhost:3000/${url}`, {

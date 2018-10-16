@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Input from '../Input/Input';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { signinHandler, toggleSpinner, getTasks } from '../../../store/actions';
+import { authHandler } from '../../../store/actions';
 import FormValidation from '../FormValidation';
 
 class Register extends Component {
@@ -85,7 +85,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  signinHandler: (email, password) => dispatch(signinHandler(email, password, null, 'login')),
+  signinHandler: (email, password) => dispatch(authHandler(email, password, null, 'login')),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Register));
