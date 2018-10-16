@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { toggleSpinner, getTasks } from '../../../store/actions';
+import { signinHandler, toggleSpinner, getTasks } from '../../../store/actions';
 import Input from '../Input/Input';
 import FormValidation from '../FormValidation';
 
@@ -82,31 +82,7 @@ class Register extends Component {
   
   render () {
     const registerHandler = () => {
-      this.props.toggleSpinner();
-      fetch('http://localhost:3000/register', {
-        method: 'post',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          name: this.state.form.name.value,
-          email: this.state.form.email.value,
-          password: this.state.form.password.value
-        })
-      }).then((res) => res.json())
-      .then((userData) => {
-        this.props.toggleSpinner();
-        if (typeof(userData) === 'object') {
-          const email = userData.userData.email;
-          const name = userData.userData.name;
-          const tasks = Object.keys(userData.userData.tasks);
-          const taskProgress = tasks.map((task) => {
-            return userData.userData.tasks[task];
-          })
-          const data = { email, name, tasks, taskProgress};
-          this.props.registerUser(data);
-          this.saveToken(userData.token.token);
-          this.props.history.push('/');
-        }
-      })
+      this.props.signinHandler(this.state.form.email.value, this.state.form.password.value, this.state.form.name.value);
     }
     
     const form = Object.keys(this.state.form).map(element => {
@@ -138,6 +114,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  signinHandler: (email, password, name) => dispatch(signinHandler(email, password, name, 'register')),
   registerUser: (data) => dispatch(getTasks(data)),
   toggleSpinner: () => dispatch(toggleSpinner())
 })

@@ -51,13 +51,13 @@ export const taskHandler = (dispatch, task, url) => {
   .catch(err => dispatch({ type: GET_TASKS_FAILED, payload: err }));
 };
 
-export const signinHandler = (email, password) => {
+export const signinHandler = (email, password, name, url) => {
   return (dispatch) => {
     dispatch({ type: 'SIGNINT_USER_PENDING' });
-    fetch('http://localhost:3000/login', {
+    fetch(`http://localhost:3000/${url}`, {
       method: 'post',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ email, password })
+      body: JSON.stringify({ email, password, name })
     }).then((res) => res.json())
     .then((token) => {
       if (typeof(token) === 'object') {

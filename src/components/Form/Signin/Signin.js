@@ -89,7 +89,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  signinHandler: (email, password) => dispatch(signinHandler(email, password)),
+  signinHandler: (email, password) => dispatch(signinHandler(email, password, null, 'login')),
   loginUser: (data) => dispatch(getTasks(data)),
   toggleSpinner: () => dispatch(toggleSpinner())
 })
