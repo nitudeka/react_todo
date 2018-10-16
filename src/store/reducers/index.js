@@ -16,7 +16,8 @@ const initialState = {
   tasks: [],
   modalShown: false,
   taskProgress: [],
-  isPending: false
+  isPending: false,
+  errMsg: false
 }
 
 const resetState = {
@@ -26,7 +27,8 @@ const resetState = {
   tasks: [],
   modalShown: false,
   taskProgress: [],
-  isPending: false
+  isPending: false,
+  errMsg: false
 }
 
 export default (state=initialState, action={}) => {
@@ -66,7 +68,16 @@ export default (state=initialState, action={}) => {
 
     case GET_TASKS_FAILED:
       return { ...state, isPending: false, err: action.payload };
+    
+    case 'SIGNINT_USER_PENDING':
+      return { ...state, isPending: true };
+      
+    case 'SIGNINT_USER_SUCCESS':
+      return { ...state, isPending: false }
 
+    case 'SIGNINT_USER_FAILED':
+      return { ...state, isPending: false, errMsg: action.payload }
+      
     default: return state;
   }
 }

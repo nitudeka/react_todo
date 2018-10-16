@@ -55,3 +55,25 @@ export const taskHandler = (dispatch, task, url) => {
   })
   .catch(err => dispatch({ type: GET_TASKS_FAILED, payload: err }));
 };
+
+export const signinHandler = (email, password) => {
+  return (dispatch) => {
+    dispatch({ type: 'SIGNINT_USER_PENDING' });
+    fetch('http://localhost:3000/login', {
+      method: 'post',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    }).then((res) => res.json())
+    .then((token) => {
+      if (typeof(token) === 'object') {
+        localStorage.setItem('token', token.token);
+        dispatch({ type: 'SIGNINT_USER_SUCCESS' });
+      } else {
+        dispatch({ type: 'SIGNINT_USER_FAILED', payload: token })
+      }
+    })
+    .catch((err) => {
+      dispatch({ type: 'SIGNINT_USER_FAILED'})
+    })
+  }
+}

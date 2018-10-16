@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Input from '../Input/Input';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { toggleSpinner, getTasks } from '../../../store/actions';
+import { signinHandler, toggleSpinner, getTasks } from '../../../store/actions';
 import FormValidation from '../FormValidation';
 
 class Register extends Component {
@@ -57,36 +57,7 @@ class Register extends Component {
   
   render () {
     const signinHandler = () => {
-      this.props.toggleSpinner();
-      const tokens = window.localStorage.getItem('token') !== null ? window.localStorage.getItem('token') : false ;
-      fetch('http://localhost:3000/login', {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-          'authorization': tokens
-        },
-        body: JSON.stringify({
-          email: this.state.form.email.value,
-          password: this.state.form.password.value
-        })
-      }).then((res) => res.json())
-      .then((data) => {
-        this.props.toggleSpinner();
-        if (typeof(data) === 'object') {
-          const email = data.userData.email;
-          const name = data.userData.name;
-          const tasks = Object.keys(data.userData.tasks);
-          const taskProgress = tasks.map((task) => {
-            return data.userData.tasks[task];
-          })
-          const mainData = { email, name, tasks, taskProgress};
-          this.props.loginUser(mainData);
-          if (data.token) {
-            this.saveToken(data.token.token);
-          }
-          this.props.history.push('/');
-        }
-      })
+      this.props.signinHandler(this.state.form.email.value, this.state.form.password.value);
     }
     
     const form = Object.keys(this.state.form).map(element => {
@@ -118,6 +89,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+  signinHandler: (email, password) => dispatch(signinHandler(email, password)),
   loginUser: (data) => dispatch(getTasks(data)),
   toggleSpinner: () => dispatch(toggleSpinner())
 })
