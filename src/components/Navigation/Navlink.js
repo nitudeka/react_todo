@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Navlink = (props) => {
 	const onClick = () => {
+    props.resetState();
     fetch('http://localhost:3000/signout', {
       mathod: 'get',
       headers: {
@@ -19,4 +21,8 @@ const Navlink = (props) => {
   )
 }
 
-export default Navlink;
+const mapDispatchToProps = (dispatch) => ({
+  resetState: () => dispatch({ type: 'RESET_STATE' })
+})
+
+export default connect(null, mapDispatchToProps)(Navlink);

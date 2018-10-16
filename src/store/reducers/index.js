@@ -26,6 +26,9 @@ export default (state=initialState, action={}) => {
   switch (action.type) {
     case GET_INPUT_CHANGE:
       return { ...state, inputValue: action.payload };
+
+    case 'RESET_STATE':
+      return { ...state, errMsg: false };
     
     case CHANGE_SPINNER_STATE:
       return { ...state, isPending: !state.isPending };
