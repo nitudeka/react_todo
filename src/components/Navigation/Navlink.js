@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Navlink = (props) => {
 	const onClick = () => {
     props.resetState();
-    fetch('https://reacttodoapi.herokuapp.com/signout', {
+    fetch('http://localhost:3000/signout', {
       mathod: 'get',
       headers: {
         authorization: window.localStorage.getItem('token')

@@ -36,7 +36,7 @@ export const getTasks = (data) => ({
 
 export const taskHandler = (dispatch, task, url) => {
   dispatch({ type: GET_TASKS_PENDING });
-  fetch(`https://reacttodoapi.herokuapp.com/${url}`, {
+  fetch(`http://localhost:3000/${url}`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ export const taskHandler = (dispatch, task, url) => {
 export const authHandler = (email, password, name, url) => {
   return (dispatch) => {
     dispatch({ type: AUTHENTICATING_USER_PENDING });
-    fetch(`https://reacttodoapi.herokuapp.com/${url}`, {
+    fetch(`http://localhost:3000/${url}`, {
       method: 'post',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ email, password, name })
