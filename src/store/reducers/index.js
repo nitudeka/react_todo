@@ -1,7 +1,6 @@
 import {
   GET_INPUT_CHANGE,
   CHANGE_SPINNER_STATE,
-  GET_TASKS,
   TOGGLE_MODAL,
   GET_TASKS_PENDING,
   GET_TASKS_SUCCESS,
@@ -32,15 +31,6 @@ export default (state=initialState, action={}) => {
     
     case CHANGE_SPINNER_STATE:
       return { ...state, isPending: !state.isPending };
-      
-    case GET_TASKS:
-      return {
-        ...state,
-        name: action.payload.name,
-        email: action.payload.email,
-        tasks: action.payload.tasks,
-        taskProgress: action.payload.taskProgress
-      }
 
     case TOGGLE_MODAL:
       return {

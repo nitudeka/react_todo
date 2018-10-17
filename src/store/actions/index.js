@@ -1,7 +1,6 @@
 import {
   GET_INPUT_CHANGE,
   CHANGE_SPINNER_STATE,
-  GET_TASKS,
   TOGGLE_MODAL,
   GET_TASKS_PENDING,
   GET_TASKS_SUCCESS,
@@ -22,16 +21,6 @@ export const toggleModal = () => ({
 export const getInputChange = (text) => ({
   type: GET_INPUT_CHANGE,
   payload: text
-});
-
-export const getTasks = (data) => ({
-  type: GET_TASKS,
-  payload: {
-    name: data.name,
-    email: data.email,
-    tasks: data.tasks,
-    taskProgress: data.taskProgress
-  }
 });
 
 export const taskHandler = (dispatch, task, url) => {
