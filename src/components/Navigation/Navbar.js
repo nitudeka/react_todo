@@ -3,14 +3,14 @@ import { withRouter } from 'react-router';
 import Navlink from './Navlink';
 
 const Navbar = (props) => {
-	let navlink = <Navlink route='/signin' link='Signout' />
+	let navlink = <Navlink route='/react_todo/signin' link='Signout' />
 	let newTask = <li onClick={props.changeModalState} className='nav__item'>New Task</li>;
 	if (props.location.pathname === '/signin') {
 		newTask = null;
-		navlink = <Navlink route='/register' link='Register' />
+		navlink = <Navlink route='/react_todo/register' link='Register' />
 	} else if (props.location.pathname === '/register') {
 		newTask = null;
-		navlink = <Navlink route='/signin' link='Signin' />
+		navlink = <Navlink route='/react_todo/signin' link='Signin' />
 	}
 	
 	return (

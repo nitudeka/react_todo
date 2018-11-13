@@ -25,7 +25,7 @@ export const getInputChange = (text) => ({
 
 export const taskHandler = (dispatch, task, url) => {
   dispatch({ type: GET_TASKS_PENDING });
-  fetch(`http://localhost:3000/${url}`, {
+  fetch(`https://reacttodoapi.herokuapp.com/${url}`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ export const taskHandler = (dispatch, task, url) => {
 export const authHandler = (email, password, name, url) => {
   return (dispatch) => {
     dispatch({ type: AUTHENTICATING_USER_PENDING });
-    fetch(`http://localhost:3000/${url}`, {
+    fetch(`https://reacttodoapi.herokuapp.com/${url}`, {
       method: 'post',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ email, password, name })

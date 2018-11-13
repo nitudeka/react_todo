@@ -7,21 +7,21 @@ import Home from '../Pages/Home';
 const Routes = (props) => {
 	return (
 		<div>
-			<Route path='/signin' render={() => {
+			<Route path='/react_todo/signin' render={() => {
         if (window.localStorage.getItem('token') === null) {
           return <Signin />
         } else {
           return <Redirect to='/' />
         }
       }} />
-      <Route path='/register' render={() => {
+      <Route path='/react_todo/register' render={() => {
         if (window.localStorage.getItem('token') === null) {
           return <Register />
         } else {
           return <Redirect to='/' />
         }
       }} />
-      <Route exact path='/' render={() => {
+      <Route exact path='/react_todo/' render={() => {
         if (window.localStorage.getItem('token') !== null) {
           return <Home />
         } else {
