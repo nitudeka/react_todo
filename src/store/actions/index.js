@@ -23,10 +23,10 @@ export const getInputChange = (text) => ({
   payload: text
 });
 
-export const taskHandler = (dispatch, task, url) => {
+export const taskHandler = (dispatch, task, url, method) => {
   dispatch({ type: GET_TASKS_PENDING });
   fetch(`https://reacttodoapi.herokuapp.com/${url}`, {
-    method: 'post',
+    method: method,
     headers: {
       'Content-Type': 'application/json',
       authorization: window.localStorage.getItem('token')

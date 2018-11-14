@@ -64,9 +64,9 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getTasks: () => taskHandler(dispatch, null, 'tasks'),
-  completeTask: (task) => taskHandler(dispatch, task, 'taskCompleted'),
-  deleteTask: (task) => taskHandler(dispatch, task, 'deleteTask')
+  getTasks: () => taskHandler(dispatch, null, 'tasks', 'GET'),
+  completeTask: (task) => taskHandler(dispatch, task, 'taskCompleted', 'POST'),
+  deleteTask: (task) => taskHandler(dispatch, task, 'deleteTask', 'POST')
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
