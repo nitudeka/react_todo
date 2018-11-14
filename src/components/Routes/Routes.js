@@ -11,21 +11,21 @@ const Routes = (props) => {
         if (window.localStorage.getItem('token') === null) {
           return <Signin />
         } else {
-          return <Redirect to='/' />
+          return <Redirect to='/react_todo/' />
         }
       }} />
       <Route path='/react_todo/register' render={() => {
         if (window.localStorage.getItem('token') === null) {
           return <Register />
         } else {
-          return <Redirect to='/' />
+          return <Redirect to='/react_todo/' />
         }
       }} />
       <Route exact path='/react_todo/' render={() => {
         if (window.localStorage.getItem('token') !== null) {
           return <Home />
         } else {
-          return <Redirect to='/signin' />
+          return <Redirect to='/react_todo/signin' />
         }
       }} />
 		</div>
