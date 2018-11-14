@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { taskHandler } from '../../store/actions';
+import { taskHandler, getTasks } from '../../store/actions';
 import Svg from '../Svg';
 
 class Home extends Component {
@@ -64,9 +64,9 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getTasks: () => taskHandler(dispatch, null, 'tasks', 'GET'),
-  completeTask: (task) => taskHandler(dispatch, task, 'taskCompleted', 'POST'),
-  deleteTask: (task) => taskHandler(dispatch, task, 'deleteTask', 'POST')
+  getTasks: () => getTasks(dispatch),
+  completeTask: (task) => taskHandler(dispatch, task, 'taskCompleted'),
+  deleteTask: (task) => taskHandler(dispatch, task, 'deleteTask')
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

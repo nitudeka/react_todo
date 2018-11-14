@@ -23,10 +23,10 @@ export const getInputChange = (text) => ({
   payload: text
 });
 
-export const taskHandler = (dispatch, task, url, method) => {
+export const taskHandler = (dispatch, task, url) => {
   dispatch({ type: GET_TASKS_PENDING });
   fetch(`https://reacttodoapi.herokuapp.com/${url}`, {
-    method: method,
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       authorization: window.localStorage.getItem('token')
@@ -42,6 +42,19 @@ export const taskHandler = (dispatch, task, url, method) => {
   })
   .catch(err => dispatch({ type: GET_TASKS_FAILED, payload: err }));
 };
+
+export const getTasks = (dispatch) => {
+  dispatch({ type: GET_TASKS_PENDING });
+  fetch('https://reacttodoapi.herokuapp.com/tasks', {
+    headers: { authorization: window.localStorage.getItem('token') }
+  }).then((res) => res.json())
+  .then((data) => {
+    if (typeof(data) === 'object') {
+      dispatch({ type: GET_TASKS_SUCCESS, payload: data });
+    }
+  })
+  .catch(err => dispatch({ type: GET_TASKS_FAILED, payload: err }));
+}
 
 export const authHandler = (email, password, name, url) => {
   return (dispatch) => {

@@ -40,7 +40,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getInputChange: (event) => dispatch(getInputChange(event.target.value)),
   toggleModalState: () => dispatch(toggleModal()),
-  addNewTask: (task) => taskHandler(dispatch, task, 'newTask', 'POST')
+  addNewTask: (task) => taskHandler(dispatch, task, 'newTask')
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
