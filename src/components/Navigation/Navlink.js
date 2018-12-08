@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { apiURL } from '../../lib/config';
 
 const Navlink = (props) => {
 	const onClick = () => {
     props.resetState();
-    fetch('https://reacttodoapi.herokuapp.com/signout', {
+    fetch(`${apiURL}signout`, {
       mathod: 'get',
       headers: {
         authorization: window.localStorage.getItem('token')

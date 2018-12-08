@@ -9,6 +9,7 @@ import {
   AUTHENTICATING_USER_SUCCESS,
   AUTHENTICATING_USER_FAILED
 } from '../constants';
+import { apiURL } from '../../lib/config';
 
 export const toggleSpinner = () => ({
   type: CHANGE_SPINNER_STATE
@@ -25,7 +26,7 @@ export const getInputChange = (text) => ({
 
 export const taskHandler = (dispatch, task, url) => {
   dispatch({ type: GET_TASKS_PENDING });
-  fetch(`https://reacttodoapi.herokuapp.com/${url}`, {
+  fetch(apiURL + url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -45,7 +46,7 @@ export const taskHandler = (dispatch, task, url) => {
 
 export const getTasks = (dispatch) => {
   dispatch({ type: GET_TASKS_PENDING });
-  fetch('https://reacttodoapi.herokuapp.com/tasks', {
+  fetch(`${apiURL}tasks`, {
     headers: { authorization: window.localStorage.getItem('token') }
   }).then((res) => res.json())
   .then((data) => {
@@ -59,7 +60,7 @@ export const getTasks = (dispatch) => {
 export const authHandler = (email, password, name, url) => {
   return (dispatch) => {
     dispatch({ type: AUTHENTICATING_USER_PENDING });
-    fetch(`https://reacttodoapi.herokuapp.com/${url}`, {
+    fetch(apiURL + url, {
       method: 'post',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ email, password, name })
