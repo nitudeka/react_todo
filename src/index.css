@@ -26,7 +26,7 @@ body {
 .nav {
   padding: 0.8rem 1.6rem;
   height: 5.6rem;
-  background-color: #4285f4;
+  background-color: #373737;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -63,6 +63,94 @@ body {
   padding-right: 1.6rem;
 }
 
-.home {
-  min-height: 100vh;
+.header {
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url(./assets/img/home-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 8px;
+  border: 3px solid rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.9);
+}
+
+.form__header {
+  font-size: 3rem;
+  font-weight: 300;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  border: 3px solid rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.form__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form__input {
+  padding: 1.5rem;
+  margin: 0 1rem;
+  color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(255, 255, 255, 0.7);
+  outline: none;
+  border: 2px solid rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6);
+  font-size: 1.6rem;
+  font-weight: 700;
+  border-radius: 3px;
+}
+
+.form__input::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+}
+
+.form__input:not(:first-child) {
+  margin-top: 2rem;
+}
+
+.form__btn {
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-top: 2rem;
+  border: none;
+  outline: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all .2s;
+  border-radius: 3px;
+  border: 2px solid rgba(0, 0, 0, 0.9);
+  font-weight: 700;
+}
+
+.form__btn:hover {
+  transform: translateY(-2px);
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+.form__btn:active {
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
 }

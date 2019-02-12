@@ -6,7 +6,11 @@
   './base/base';
 
 @import
-  './layout/navbar';
+  './layout/navbar',
+  './layout/header';
+
+@import
+  './components/form.scss';
 
 @import
   './pages/home';
