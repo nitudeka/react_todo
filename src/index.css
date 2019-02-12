@@ -122,11 +122,11 @@ body {
 }
 
 .form__input--invalid {
-  border: 2px solid rgba(255, 0, 0, 0.9);
+  background-color: rgba(220, 53, 69, 0.3);
 }
 
 .form__input--valid {
-  border: 2px solid rgba(0, 0, 255, 0.9);
+  background-color: rgba(40, 167, 69, 0.3);
 }
 
 .form__input::placeholder {
@@ -135,7 +135,7 @@ body {
 }
 
 .form__input:focus {
-  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 .form__input:not(:first-child) {
