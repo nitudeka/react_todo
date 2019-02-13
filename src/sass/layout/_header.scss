@@ -26,7 +26,7 @@
     font-size: 9rem;
     
     &--main {
-      color: rgba($color-white, 0.5);
+      color: rgba($color-white, 0.7);
       display: block;
       font-size: 2.5rem;
       font-weight: 300;
@@ -34,7 +34,7 @@
     }
     
     &--sub {
-      color: rgba($color-white, 0.5);
+      color: rgba($color-white, 0.6);
       display: block;
       font-size: 1.5rem;
       font-weight: 700;
@@ -43,7 +43,6 @@
   
   &__container {
     width: 100%;
-    min-height: 200px;
     position: relative;
     
     &--main {
@@ -51,7 +50,6 @@
       left: 0;
       width: 50%;
       height: 100%;
-      // background-color: rgba($color-white, 0.5);
       display: flex;
       justify-content: center;
       align-items: center;
