@@ -8,8 +8,6 @@ class Form extends Component {
       name: {
         type: 'text',
         placeholder: 'Name',
-        valid: false,
-        focused: false,
         rules: {
           required: true
         }
@@ -17,8 +15,6 @@ class Form extends Component {
       email: {
         type: 'email',
         placeholder: 'Email',
-        valid: false,
-        focused: false,
         rules: {
           required: true,
           email: true
@@ -27,45 +23,40 @@ class Form extends Component {
       password: {
         type: 'password',
         placeholder: 'Password',
-        valid: false,
-        focused: false,
         rules: {
           required: true,
           minLength: 6
         }
       }
-    }
+    },
+    validInputs: [],
+    focusedInputs: [],
+    validForm: false
   }
 
   inputChangeHandler = (input, inputName) => {
     const inputIsValid = validate(input, this.state.inputs[inputName].rules);
+    this.setState({ focusedInputs: [ ...this.state.focusedInputs, inputName ] });
     if (inputIsValid) {
-      const updatedInputs = {
-        ...this.state.inputs,
-        [inputName]: {
-          ...this.state.inputs[inputName],
-          valid: true,
-          focused: true
-        }
-      };
-      this.setState({ inputs: updatedInputs });
+      this.setState((prevState) => {
+        prevState.validInputs.push(inputName);
+        return { validInputs: prevState.validInputs };
+      })
     } else {
-      const updatedInputs = {
-        ...this.state.inputs,
-        [inputName]: {
-          ...this.state.inputs[inputName],
-          valid: false,
-          focused: true
-        }
-      };
-      this.setState({ inputs: updatedInputs });
+      this.setState((prevState) => {
+        delete prevState.validInputs[prevState.validInputs.indexOf(inputName)];
+        return { validInputs: prevState.validInputs };
+      })
+    }
+    if (this.state.validInputs.length === Object.keys(this.state.inputs).length) {
+      this.setState({ validForm: true });
     }
   };
 
   render() {
     const inputs = Object.keys(this.state.inputs).map((input) => {
       const inputName = this.state.inputs[input];
-      return <Input onChange={(event) => this.inputChangeHandler(event.target.value, input) } focused={inputName.focused} valid={inputName.valid} key={input} type={inputName.type} placeholder={inputName.placeholder} />
+      return <Input onChange={(event) => this.inputChangeHandler(event.target.value, input) } focused={this.state.focusedInputs.indexOf(input) > -1} valid={this.state.validInputs.indexOf(input) > -1} key={input} type={inputName.type} placeholder={inputName.placeholder} />
     });
     
     return (
@@ -74,7 +65,7 @@ class Form extends Component {
         <div className='form__container'>
           { inputs }
         </div>
-        <button className='form__btn'>I'm in</button>
+        <button disabled className='form__btn'>I'm in</button>
       </div>
     )
   }
