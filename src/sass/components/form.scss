@@ -89,5 +89,10 @@
       box-shadow: 0 1px 10px rgba($color-black, 0.5);
       transform: translateY(-1px);
     }
+
+    &:disabled {
+      cursor: not-allowed;
+      color: $color-black;
+    }
   }
 }
