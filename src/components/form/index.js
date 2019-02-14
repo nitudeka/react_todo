@@ -4,41 +4,6 @@ import { inputChangeHandler } from '../../store/actions';
 import Input from './input';
 
 class Form extends Component {
-  state = {
-    inputs: {
-      name: {
-        type: 'text',
-        placeholder: 'Name',
-        valid: false,
-        focused: false,
-        rules: {
-          required: true
-        }
-      },
-      email: {
-        type: 'email',
-        placeholder: 'Email',
-        valid: false,
-        focused: false,
-        rules: {
-          required: true,
-          email: true
-        }
-      },
-      password: {
-        type: 'password',
-        placeholder: 'Password',
-        valid: false,
-        focused: false,
-        rules: {
-          required: true,
-          minLength: 6
-        }
-      }
-    },
-    validForm: false
-  }
-
   render() {
     const inputs = Object.keys(this.props.inputs).map((input) => {
       const inputName = this.props.inputs[input];
