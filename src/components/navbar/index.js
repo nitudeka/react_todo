@@ -12,14 +12,14 @@ const navbar = (props) => {
           <li className='nav__item'><a className='nav__link' href='/'>Try it!</a></li>
         </ul>
       </div>
-      <div onClick={props.toggleForm} className='nav__user'>Login</div>
+      <div onClick={props.toggleForm} className='nav__user'>{props.formName}</div>
     </div>
   )
 };
 
-const mapStateToProps = (state) => {
-  return {}
-};
+const mapStateToProps = (state) => ({
+  formName: state.nav.defaultForm ? 'Login' : 'Register'
+});
 
 const mapDispatchToProps = (dispatch) => ({
   toggleForm: () => { dispatch(toggleForm()) }
