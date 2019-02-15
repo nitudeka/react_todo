@@ -41,6 +41,10 @@ body {
   align-items: center;
 }
 
+.nav__form-name {
+  cursor: pointer;
+}
+
 .nav__container {
   display: flex;
   justify-content: center;

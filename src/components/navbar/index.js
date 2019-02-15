@@ -12,7 +12,7 @@ const navbar = (props) => {
           <li className='nav__item'><a className='nav__link' href='/'>Try it!</a></li>
         </ul>
       </div>
-      <div onClick={props.toggleForm} className='nav__user'>{props.formName}</div>
+      <div onClick={props.toggleForm} className='nav__form-name'>{props.formName}</div>
     </div>
   )
 };
