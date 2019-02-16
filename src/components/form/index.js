@@ -33,7 +33,7 @@ const form = (props) => {
       <div className='form__container'>
         { inputs }
       </div>
-      <button className='form__btn'>I'm in</button>
+      <button className='form__btn'>{mainForm.formBtn}</button>
     </div>
   )
 };

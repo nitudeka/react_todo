@@ -3,6 +3,7 @@ import { INPUT_CHANGE } from '../constants';
 const initialState = {
   register: {
     formName: 'register',
+    formBtn: 'Take me in',
     inputs: {
       registerName: {
         type: 'text',
@@ -40,6 +41,7 @@ const initialState = {
   },
   login: {
     formName: 'login',
+    formBtn: 'I am back',
     inputs: {
       loginEmail: {
         type: 'email',
