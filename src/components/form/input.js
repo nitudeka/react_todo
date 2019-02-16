@@ -9,7 +9,7 @@ const input = (props) => {
     }
   }
   return (
-    <input onChange={props.onChange} className={classNames.join(' ')} type={props.type} placeholder={props.placeholder} />
+    <input value={props.value} onChange={props.onChange} className={classNames.join(' ')} type={props.type} placeholder={props.placeholder} />
   )
 };
 
