@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { inputChangeHandler } from '../../store/actions';
-import Input from './input';
+import Input from './_input';
 
 const form = (props) => {
   /*
