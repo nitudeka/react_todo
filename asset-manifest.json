@@ -1,14 +1,14 @@
 {
-  "main.css": "/react_todo/static/css/main.b3d14b4c.chunk.css",
-  "main.js": "/react_todo/static/js/main.7861b1cc.chunk.js",
-  "main.js.map": "/react_todo/static/js/main.7861b1cc.chunk.js.map",
+  "main.css": "/react_todo/static/css/main.bd3b0e8d.chunk.css",
+  "main.js": "/react_todo/static/js/main.e9dd2768.chunk.js",
+  "main.js.map": "/react_todo/static/js/main.e9dd2768.chunk.js.map",
   "static/js/1.a7e5c3a0.chunk.js": "/react_todo/static/js/1.a7e5c3a0.chunk.js",
   "static/js/1.a7e5c3a0.chunk.js.map": "/react_todo/static/js/1.a7e5c3a0.chunk.js.map",
   "runtime~main.js": "/react_todo/static/js/runtime~main.92900329.js",
   "runtime~main.js.map": "/react_todo/static/js/runtime~main.92900329.js.map",
-  "static/media/index.css": "/react_todo/static/media/home-bg.05733d49.jpg",
-  "static/css/main.b3d14b4c.chunk.css.map": "/react_todo/static/css/main.b3d14b4c.chunk.css.map",
+  "static/media/index.css": "/react_todo/static/media/home-bg.4cf82f7a.jpg",
+  "static/css/main.bd3b0e8d.chunk.css.map": "/react_todo/static/css/main.bd3b0e8d.chunk.css.map",
   "index.html": "/react_todo/index.html",
-  "precache-manifest.56a50e645e7c5cde11be738bdaee6422.js": "/react_todo/precache-manifest.56a50e645e7c5cde11be738bdaee6422.js",
+  "precache-manifest.ca08e463b6ca8cdf73ef40b9c56f6e75.js": "/react_todo/precache-manifest.ca08e463b6ca8cdf73ef40b9c56f6e75.js",
   "service-worker.js": "/react_todo/service-worker.js"
 }
