@@ -56,8 +56,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(form);
-
-/*
-  @todo
-  #1: remove unnecessery input updates
-*/

@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const input = (props) => {
-  let classNames = ['form__input'];
-  if (props.focused) {
-    classNames.push('form__input--invalid');
-    if (props.valid) {
-      classNames.push('form__input--valid');
+class Input extends Component {
+  shouldComponentUpdate(nextProps) {
+    return nextProps.value !== this.props.value;
+  };
+  
+  render() {
+    let classNames = ['form__input'];
+    if (this.props.focused) {
+      classNames.push('form__input--invalid');
+      if (this.props.valid) {
+        classNames.push('form__input--valid');
+      }
     }
+    return (
+      <input value={this.props.value} onChange={this.props.onChange} className={classNames.join(' ')} type={this.props.type} placeholder={this.props.placeholder} />
+    )
   }
-  return (
-    <input value={props.value} onChange={props.onChange} className={classNames.join(' ')} type={props.type} placeholder={props.placeholder} />
-  )
-};
+}
 
-export default input;
+export default Input;
