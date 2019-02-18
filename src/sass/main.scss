@@ -3,14 +3,16 @@
 
 @import
   './base/reset',
-  './base/base';
+  './base/base',
+  './base/animations';
 
 @import
   './layout/navbar',
   './layout/header';
 
 @import
-  './components/form.scss';
+  './components/form.scss',
+  './components/spinner';
 
 @import
   './pages/home';
