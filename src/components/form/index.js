@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { inputChangeHandler } from '../../store/actions';
+import Spinner from '../spinner';
 import Input from './_input';
 import Button from './_btn';
 
@@ -30,6 +31,7 @@ const form = (props) => {
 
   return (
     <div className='form'>
+      <Spinner showSpinner={props.showSpinner} />
       <span className='form__header'>{mainForm.formName.toUpperCase()}</span>
       <div className='form__container'>
         { inputs }
@@ -43,6 +45,7 @@ const mapStateToProps = (state) => {
   const { form, nav } = state;
   return {
     defaultForm: nav.defaultForm, // required property to toggle between the login and register form
+    showSpinner: form.isPending,
     register: form.register,
     login: form.login
   }

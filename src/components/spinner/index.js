@@ -1,12 +1,21 @@
 import React from 'react';
 
 const spinner = (props) => {
+  const className = ['spinner-container'];
+  if (props.showSpinner) {
+    className.push('spinner-container--show');
+  } else {
+    className.push('spinner-container--hide');
+  }
+  
   return (
-    <div className="sk-folding-cube">
-      <div className="sk-cube1 sk-cube"></div>
-      <div className="sk-cube2 sk-cube"></div>
-      <div className="sk-cube4 sk-cube"></div>
-      <div className="sk-cube3 sk-cube"></div>
+    <div className={className.join(' ')}>
+      <div className="spinner">
+        <div className="spinner-cube1 spinner-cube"></div>
+        <div className="spinner-cube2 spinner-cube"></div>
+        <div className="spinner-cube4 spinner-cube"></div>
+        <div className="spinner-cube3 spinner-cube"></div>
+      </div>
     </div>
   )
 };

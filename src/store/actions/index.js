@@ -53,6 +53,6 @@ export const loginUser = (dispatch, inputValues) => {
       });
     })
     .catch((err) => {
-      dispatch({ type: SEND_USER_DATA_FAILED });
+      dispatch({ type: SEND_USER_DATA_FAILED, message: err.message });
     })
 };

@@ -23,6 +23,21 @@ body {
   background-color: #f3f3f3;
 }
 
+@keyframes spinner-foldCubeAngle {
+  0%, 10% {
+    transform: perspective(140px) rotateX(-180deg);
+    opacity: 0;
+  }
+  25%, 75% {
+    transform: perspective(140px) rotateX(0deg);
+    opacity: 1;
+  }
+  90%, 100% {
+    transform: perspective(140px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
 .nav {
   position: absolute;
   z-index: 100;
@@ -139,6 +154,7 @@ body {
 }
 
 .form {
+  position: relative;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.3);
   display: flex;
@@ -235,7 +251,7 @@ body {
   color: black;
 }
 
-.sk-folding-cube {
+.spinner {
   margin: 20px auto;
   width: 40px;
   height: 40px;
@@ -243,7 +259,27 @@ body {
   transform: rotateZ(45deg);
 }
 
-.sk-folding-cube .sk-cube {
+.spinner-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+}
+
+.spinner-container--show {
+  display: flex;
+}
+
+.spinner-container--hide {
+  display: none;
+}
+
+.spinner-cube {
   float: left;
   width: 50%;
   height: 50%;
@@ -251,7 +287,7 @@ body {
   transform: scale(1.1);
 }
 
-.sk-folding-cube .sk-cube:before {
+.spinner-cube::before {
   content: '';
   position: absolute;
   top: 0;
@@ -259,45 +295,30 @@ body {
   width: 100%;
   height: 100%;
   background-color: #333;
-  animation: sk-foldCubeAngle 2.4s infinite linear both;
+  animation: spinner-foldCubeAngle 2.4s infinite linear both;
   transform-origin: 100% 100%;
 }
 
-.sk-folding-cube .sk-cube2 {
+.spinner-cube2 {
   transform: scale(1.1) rotateZ(90deg);
 }
 
-.sk-folding-cube .sk-cube3 {
-  transform: scale(1.1) rotateZ(180deg);
-}
-
-.sk-folding-cube .sk-cube4 {
-  transform: scale(1.1) rotateZ(270deg);
-}
-
-.sk-folding-cube .sk-cube2:before {
+.spinner-cube2::before {
   animation-delay: 0.3s;
 }
 
-.sk-folding-cube .sk-cube3:before {
+.spinner-cube3 {
+  transform: scale(1.1) rotateZ(180deg);
+}
+
+.spinner-cube3::before {
   animation-delay: 0.6s;
 }
 
-.sk-folding-cube .sk-cube4:before {
-  animation-delay: 0.9s;
+.spinner-cube4 {
+  transform: scale(1.1) rotateZ(270deg);
 }
 
-@keyframes sk-foldCubeAngle {
-  0%, 10% {
-    transform: perspective(140px) rotateX(-180deg);
-    opacity: 0;
-  }
-  25%, 75% {
-    transform: perspective(140px) rotateX(0deg);
-    opacity: 1;
-  }
-  90%, 100% {
-    transform: perspective(140px) rotateY(180deg);
-    opacity: 0;
-  }
+.spinner-cube4::before {
+  animation-delay: 0.9s;
 }

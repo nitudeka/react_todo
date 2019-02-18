@@ -1,6 +1,13 @@
-import { INPUT_CHANGE } from '../constants';
+import {
+  INPUT_CHANGE,
+  SEND_USER_DATA_PENDING,
+  SEND_USER_DATA_SUCCESS,
+  SEND_USER_DATA_FAILED
+} from '../constants';
 
 const initialState = {
+  isPending: false,
+  errMsg: false,
   register: {
     formName: 'register',
     formBtn: 'Take me in',
@@ -86,6 +93,12 @@ export default (state=initialState, action) => {
           }
         }
       }
+    case SEND_USER_DATA_PENDING:
+      return { ...state, isPending: true };
+    case SEND_USER_DATA_SUCCESS:
+      return { ...state, isPending: false };
+    case SEND_USER_DATA_FAILED:
+      return { ...state, isPending: false, errMsg: action.payload.message };
     
     default: return state;
   }
