@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { inputChangeHandler } from '../../store/actions';
 import Input from './_input';
+import Button from './_btn';
 
 const form = (props) => {
   /*
@@ -33,7 +34,7 @@ const form = (props) => {
       <div className='form__container'>
         { inputs }
       </div>
-      <button className='form__btn'>{mainForm.formBtn}</button>
+      <Button formName={mainForm.formName} inputData={mainForm.inputs} formBtn={mainForm.formBtn} />
     </div>
   )
 };
@@ -47,11 +48,11 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, nextstate) => {
   return {
     inputChangeHandler: (formName, inputValue, inputName, rules) => {
       dispatch(inputChangeHandler(formName, inputValue, inputName, rules))
-    }
+    },
   };
 };
 
