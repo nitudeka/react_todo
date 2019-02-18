@@ -40,4 +40,19 @@ export const registerUser = (dispatch, inputValues) => {
 
 export const loginUser = (dispatch, inputValues) => {
   dispatch({ type: SEND_USER_DATA_PENDING });
+  fetch('http://localhost:3000/signin', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ email: inputValues.loginEmail, password: inputValues.loginPassword, joined: Date.now() })
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      dispatch({
+        type: SEND_USER_DATA_SUCCESS,
+        token: data.token
+      });
+    })
+    .catch((err) => {
+      dispatch({ type: SEND_USER_DATA_FAILED });
+    })
 };
