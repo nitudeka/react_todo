@@ -4,11 +4,11 @@ import { registerUser, loginUser } from '../../store/actions';
 
 const formBtn = (props) => {
   const onFormSubmit = () => {
-    const inputValues = Object.keys(props.inputData).map((inputName) => {
-      return {
-        [inputName]: props.inputData[inputName].inputValue
-      }
-    });
+    const inputValues = {};
+    const inputs = Object.keys(props.inputData);
+    for(let i=0; i<inputs.length; i++) {
+      inputValues[inputs[i]] = props.inputData[inputs[i]].inputValue;
+    }
     if (props.formName === 'register') {
       props.registerUser(inputValues);
     } else {
