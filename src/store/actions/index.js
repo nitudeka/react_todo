@@ -32,10 +32,11 @@ export const authenticateUser = (dispatch, path, reqData) => {
       return res.json()
     })
     .then((data) => {
+      // store the token in the browser cache
+      window.localStorage.setItem('token', data.token);
       dispatch({
         type: SEND_USER_DATA_SUCCESS,
         payload: {
-          token: data.token,
           message: data.message, statusCode
         }
       });
