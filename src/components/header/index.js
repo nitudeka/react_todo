@@ -1,7 +1,12 @@
-import React from 'react';
-import Form from '../form/index';
+/*
+ * Header for my homepage
+ *
+ */
 
-const header = (props) => {
+import React from 'react';
+import Form from '../form/index'; // Forms required in the header
+
+const header = () => {
   return (
     <div className='header'>
       <span className='header__seperator'></span>

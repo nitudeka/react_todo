@@ -1,8 +1,15 @@
+/*
+ * Custom inputs for the forms
+ *
+ */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// handle when the input changes (validate, store the input values in the redux store)
 import { inputChangeHandler } from '../../store/actions';
 
 class Input extends Component {
+  // prevent unnecessery update of the component
   shouldComponentUpdate(nextProps) {
     return nextProps.value !== this.props.value;
   };

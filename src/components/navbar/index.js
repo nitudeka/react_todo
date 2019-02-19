@@ -1,6 +1,11 @@
+/*
+ * All the navigation related logic is here
+ *
+ */
+
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleForm } from '../../store/actions';
+import { toggleForm } from '../../store/actions'; // used to toggle between the register and signin forms
 
 const navbar = (props) => {
   return (

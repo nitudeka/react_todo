@@ -1,3 +1,8 @@
+/*
+ * main starting point of my app
+ *
+ */
+
 import React, { Component } from 'react';
 import Navbar from '../components/navbar';
 import Home from '../pages/home';

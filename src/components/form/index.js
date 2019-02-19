@@ -1,8 +1,13 @@
+/*
+ * Form to authenticate an user (used in the header of the homepage)
+ *
+ */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Spinner from '../spinner';
-import Input from './_input';
-import Button from './_btn';
+import Input from './_input'; // Custom inputs for the forms
+import Button from './_btn'; // Custom buttons that handles the form submission
 
 class Form extends Component {
   render() {
@@ -11,7 +16,10 @@ class Form extends Component {
     * if it is "true" then set it to "register" otherwise to "login"
     *
     */
+
+    // choose the form that is required according the the navbar
     const mainForm = this.props.defaultForm ? this.props.register : this.props.login;
+    // get all the input fields and their respective properties from the redux state
     const inputs = Object.keys(mainForm.inputs).map((input) => {
       const inputName = mainForm.inputs[input];
       return (

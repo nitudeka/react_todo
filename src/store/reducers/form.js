@@ -6,6 +6,7 @@ import {
 } from '../constants';
 
 const initialState = {
+  errorSendingForm: false,
   isPending: false,
   message: {
     message: false,
@@ -112,6 +113,7 @@ export default (state=initialState, action) => {
       return {
         ...state,
         isPending: false,
+        errorSendingForm: true,
         message: {
           ...state.message,
           message: action.payload.message,
