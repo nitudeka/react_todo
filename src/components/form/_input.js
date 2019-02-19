@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { inputChangeHandler } from '../../store/actions';
 
 class Input extends Component {
   shouldComponentUpdate(nextProps) {
@@ -14,9 +16,20 @@ class Input extends Component {
       }
     }
     return (
-      <input value={this.props.value} onChange={this.props.onChange} className={classNames.join(' ')} type={this.props.type} placeholder={this.props.placeholder} />
+      <input value={this.props.value}
+        onChange={(event) => { this.props.inputChangeHandler(this.props.formName, event.target.value, this.props.inputName, this.props.rules) }}
+        className={classNames.join(' ')}
+        type={this.props.type}
+        placeholder={this.props.placeholder}
+      />
     )
   }
 }
 
-export default Input;
+const mapDispatchToProps = (dispatch) => ({
+  inputChangeHandler: (formName, inputValue, inputName, rules) => {
+    dispatch(inputChangeHandler(formName, inputValue, inputName, rules))
+  }
+});
+
+export default connect(null, mapDispatchToProps)(Input);

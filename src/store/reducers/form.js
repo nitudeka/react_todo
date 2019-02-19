@@ -7,12 +7,15 @@ import {
 
 const initialState = {
   isPending: false,
-  errMsg: false,
+  message: {
+    message: false,
+    statusCode: false
+  },
   register: {
     formName: 'register',
     formBtn: 'Take me in',
     inputs: {
-      registerName: {
+      name: {
         type: 'text',
         placeholder: 'Name',
         valid: false,
@@ -22,7 +25,7 @@ const initialState = {
           required: true
         }
       },
-      registerEmail: {
+      email: {
         type: 'email',
         placeholder: 'Email',
         valid: false,
@@ -33,7 +36,7 @@ const initialState = {
           email: true
         }
       },
-      registerPassword: {
+      password: {
         type: 'password',
         placeholder: 'Password',
         valid: false,
@@ -50,7 +53,7 @@ const initialState = {
     formName: 'login',
     formBtn: 'I am back',
     inputs: {
-      loginEmail: {
+      email: {
         type: 'email',
         placeholder: 'Email',
         valid: false,
@@ -61,7 +64,7 @@ const initialState = {
           email: true
         }
       },
-      loginPassword: {
+      password: {
         type: 'password',
         placeholder: 'Password',
         valid: false,
@@ -96,9 +99,25 @@ export default (state=initialState, action) => {
     case SEND_USER_DATA_PENDING:
       return { ...state, isPending: true };
     case SEND_USER_DATA_SUCCESS:
-      return { ...state, isPending: false };
+    return {
+      ...state,
+      isPending: false,
+      message: {
+        ...state.message,
+        message: action.payload.message,
+        statusCode: action.payload.statusCode
+      }
+    };
     case SEND_USER_DATA_FAILED:
-      return { ...state, isPending: false, errMsg: action.payload.message };
+      return {
+        ...state,
+        isPending: false,
+        message: {
+          ...state.message,
+          message: action.payload.message,
+          statusCode: action.payload.statusCode
+        }
+      };
     
     default: return state;
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { registerUser, loginUser } from '../../store/actions';
+import { authenticateUser } from '../../store/actions';
 
 const formBtn = (props) => {
   const onFormSubmit = () => {
@@ -9,11 +9,9 @@ const formBtn = (props) => {
     for(let i=0; i<inputs.length; i++) {
       inputValues[inputs[i]] = props.inputData[inputs[i]].inputValue;
     }
-    if (props.formName === 'register') {
-      props.registerUser(inputValues);
-    } else {
-      props.loginUser(inputValues);
-    }
+    const reqData = { ...inputValues, joined: Date.now() };
+    const path = props.formName === 'register' ? 'register' : 'signin';
+    props.authenticateUser(reqData, path);
   };
   
   return (
@@ -22,8 +20,7 @@ const formBtn = (props) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  registerUser: (inputValues) => registerUser(dispatch, inputValues),
-  loginUser: (inputValues) => loginUser(dispatch, inputValues)
+  authenticateUser: (reqData, path) => authenticateUser(dispatch, path, reqData)
 });
 
 export default connect(null, mapDispatchToProps)(formBtn);

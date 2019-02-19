@@ -19,40 +19,33 @@ export const toggleForm = () => ({
   type: CHANGE_FORM
 });
 
-export const registerUser = (dispatch, inputValues) => {
+export const authenticateUser = (dispatch, path, reqData) => {
   dispatch({ type: SEND_USER_DATA_PENDING });
-  fetch('http://localhost:3000/register', {
+  let statusCode;
+  fetch(`http://localhost:3000/${path}`, {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ name: inputValues.registerName, email: inputValues.registerEmail, password: inputValues.registerPassword, joined: Date.now() })
+    body: JSON.stringify( reqData )
   })
-    .then((res) => res.json())
+    .then((res) => {
+      statusCode = res.status;
+      return res.json()
+    })
     .then((data) => {
       dispatch({
         type: SEND_USER_DATA_SUCCESS,
-        token: data.token
+        payload: {
+          token: data.token,
+          message: data.message, statusCode
+        }
       });
     })
     .catch((err) => {
-      dispatch({ type: SEND_USER_DATA_FAILED });
-    })
-};
-
-export const loginUser = (dispatch, inputValues) => {
-  dispatch({ type: SEND_USER_DATA_PENDING });
-  fetch('http://localhost:3000/signin', {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ email: inputValues.loginEmail, password: inputValues.loginPassword, joined: Date.now() })
-  })
-    .then((res) => res.json())
-    .then((data) => {
       dispatch({
-        type: SEND_USER_DATA_SUCCESS,
-        token: data.token
+        type: SEND_USER_DATA_FAILED,
+        payload: {
+          message: err.message, statusCode
+        }
       });
-    })
-    .catch((err) => {
-      dispatch({ type: SEND_USER_DATA_FAILED, message: err.message });
     })
 };
