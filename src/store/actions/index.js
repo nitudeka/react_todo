@@ -20,10 +20,16 @@ export const toggleForm = () => ({
   type: CHANGE_FORM
 });
 
+export const removeNotificationAuto = (dispatch) => {
+  setTimeout(() => {
+    dispatch({ type: REMOVE_NOTIFICATION, payload: { index: 0 } });
+  }, 5000);
+};
+
 export const removeNotification = (index) => ({
   type: REMOVE_NOTIFICATION,
   payload: { index }
-});
+})
 
 export const authenticateUser = (dispatch, path, reqData) => {
   dispatch({ type: SEND_USER_DATA_PENDING });

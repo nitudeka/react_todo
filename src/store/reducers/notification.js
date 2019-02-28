@@ -18,7 +18,7 @@ export default (state=initialState, action) => {
 			};
 
 		case REMOVE_NOTIFICATION:
-			const index = action.payload.index ? action.payload.index : 0;
+			const index = action.payload.index;
 			return {
 				...state,
 				messages: [].concat([...state.messages].slice(0, index), [...state.messages].slice(index + 1)),
