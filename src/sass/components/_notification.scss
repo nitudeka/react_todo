@@ -1,4 +1,18 @@
 .notification {
+  height: 60px;
+  width: 300px;
+  background-color: rgba(178, 176, 176, 1);
+  padding: 1rem 1.5rem;
+  border-radius: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  
+  &:not(:first-child) {
+    margin-top: 7px;
+  }
+  
   &__container {
     display: flex;
     flex-flow: column;
@@ -6,7 +20,5 @@
     top: 1rem;
     right: 1rem;
     z-index: 2000;
-
-    border: 1px solid black;
   }
 }

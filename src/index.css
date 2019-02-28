@@ -251,6 +251,22 @@ body {
   color: black;
 }
 
+.notification {
+  height: 60px;
+  width: 300px;
+  background-color: #b2b0b0;
+  padding: 1rem 1.5rem;
+  border-radius: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.notification:not(:first-child) {
+  margin-top: 7px;
+}
+
 .notification__container {
   display: flex;
   flex-flow: column;
@@ -258,7 +274,6 @@ body {
   top: 1rem;
   right: 1rem;
   z-index: 2000;
-  border: 1px solid black;
 }
 
 .spinner {
