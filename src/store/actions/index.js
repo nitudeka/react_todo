@@ -1,6 +1,7 @@
 import {
   INPUT_CHANGE,
   CHANGE_FORM,
+  REMOVE_NOTIFICATION,
   SEND_USER_DATA_PENDING,
   SEND_USER_DATA_SUCCESS,
   SEND_USER_DATA_FAILED
@@ -17,6 +18,11 @@ export const inputChangeHandler = (formName, inputValue, inputName, rules) => {
 
 export const toggleForm = () => ({
   type: CHANGE_FORM
+});
+
+export const removeNotification = (index) => ({
+  type: REMOVE_NOTIFICATION,
+  payload: { index }
 });
 
 export const authenticateUser = (dispatch, path, reqData) => {

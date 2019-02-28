@@ -251,6 +251,16 @@ body {
   color: black;
 }
 
+.notification__container {
+  display: flex;
+  flex-flow: column;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2000;
+  border: 1px solid black;
+}
+
 .spinner {
   margin: 20px auto;
   width: 40px;
