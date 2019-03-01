@@ -11,6 +11,7 @@ import Button from './_btn'; // Custom buttons that handles the form submission
 
 class Form extends Component {
   render() {
+    const { defaultForm, register, login, showSpinner } = this.props;
     /*
     * set the form according to the "defaultForm" property
     * if it is "true" then set it to "register" otherwise to "login"
@@ -18,7 +19,7 @@ class Form extends Component {
     */
 
     // choose the form that is required according the the navbar
-    const mainForm = this.props.defaultForm ? this.props.register : this.props.login;
+    const mainForm = defaultForm ? register : login;
     // get all the input fields and their respective properties from the redux state
     const inputs = Object.keys(mainForm.inputs).map((input) => {
       const inputName = mainForm.inputs[input];
@@ -39,12 +40,16 @@ class Form extends Component {
 
     return (
       <div className='form'>
-        <Spinner showSpinner={this.props.showSpinner} />
+        <Spinner showSpinner={showSpinner} />
         <span className='form__header'>{mainForm.formName.toUpperCase()}</span>
         <div className='form__container'>
           { inputs }
         </div>
-        <Button formName={mainForm.formName} inputData={mainForm.inputs} formBtn={mainForm.formBtn} />
+        <Button
+          formName={mainForm.formName}
+          inputData={mainForm.inputs}
+          formBtn={mainForm.formBtn}
+        />
       </div>
     )
   }
