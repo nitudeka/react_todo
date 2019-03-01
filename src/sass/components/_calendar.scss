@@ -1,0 +1,13 @@
+.calendar {
+	height: 3rem;
+	width: 50rem;
+	background-color: red;
+	
+	&__container {
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

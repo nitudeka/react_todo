@@ -251,6 +251,20 @@ body {
   color: black;
 }
 
+.calendar {
+  height: 3rem;
+  width: 50rem;
+  background-color: red;
+}
+
+.calendar__container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .spinner {
   margin: 20px auto;
   width: 40px;

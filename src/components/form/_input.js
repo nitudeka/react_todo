@@ -13,21 +13,27 @@ class Input extends Component {
   shouldComponentUpdate(nextProps) {
     return nextProps.value !== this.props.value;
   };
-  
+
   render() {
+    const {
+      inputChangeHandler, formName, inputName, rules, value, type, placeholder
+    } = this.props;
     let classNames = ['form__input'];
     if (this.props.focused) {
       classNames.push('form__input--invalid');
       if (this.props.valid) {
         classNames.push('form__input--valid');
-      }
-    }
+      };
+    };
+
     return (
-      <input value={this.props.value}
-        onChange={(event) => { this.props.inputChangeHandler(this.props.formName, event.target.value, this.props.inputName, this.props.rules) }}
+      <input value={value}
+        onChange={(event) => {
+          inputChangeHandler(formName, event.target.value, inputName, rules) }
+        }
         className={classNames.join(' ')}
-        type={this.props.type}
-        placeholder={this.props.placeholder}
+        type={type}
+        placeholder={placeholder}
       />
     )
   }
