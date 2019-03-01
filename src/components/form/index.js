@@ -58,7 +58,7 @@ class Form extends Component {
 const mapStateToProps = (state) => {
   const { form, nav } = state;
   return {
-    defaultForm: nav.defaultForm, // required property to toggle between the login and register form
+    defaultForm: nav.defaultForm, //  required property to toggle between the login and register form
     showSpinner: form.isPending,
     register: form.register,
     login: form.login
