@@ -4,6 +4,7 @@ import Td from './_td';
 
 const tableBody = (props) => {
 	console.log(props.dates);
+
 	return (
 		<tbody>
 			<tr>
