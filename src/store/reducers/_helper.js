@@ -14,7 +14,7 @@ export const allDatesOfMonth = (month, year) => {
 	let allDatesInNextMonth = [];
 
 	// validate the inputs or set the defaults
-	month = typeof(month) === 'number' && month >= 1 && month <= 12 ? month : new Date().getMonth() + 2;
+	month = typeof(month) === 'number' && month >= 1 && month <= 12 ? month : new Date().getMonth() + 1;
 	year = typeof(year) === 'number' ? year : new Date().getFullYear();
 
 	// returns total no. of dates in a given month
@@ -47,8 +47,6 @@ export const allDatesOfMonth = (month, year) => {
 		allDatesInNextMonth.push(i);
 	};
 
-	const allDates = [].concat(allDatesInLastMonth, allDatesInMonth, allDatesInNextMonth);
-
-	// concat all the arrays and return it (total length of the array = 42)
-	return allDates;
+	// concat all the arrays and return it
+	return [].concat(allDatesInLastMonth, allDatesInMonth, allDatesInNextMonth);
 };
