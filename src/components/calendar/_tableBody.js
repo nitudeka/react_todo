@@ -1,24 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Td from './_td';
+import Tr from './_tr';
 
 const tableBody = (props) => {
+	// array consisting of dates of each week in the month
 	const datesArray = [];
 	for(let i=0; i<props.dates.length/7; i++) {
 		datesArray.push(props.dates.slice(i*7, (i + 1) * 7));
 	};
 
+	const allDates = datesArray.map((weekDates, i) => {
+		return <Tr key={i} weekDates={weekDates} />
+	});
+
 	return (
 		<tbody>
-			<tr>
-				<Td date='1' />
-				<Td date='2' />
-				<Td date='3' />
-				<Td date='4' />
-				<Td date='5' />
-				<Td date='6' />
-				<Td date='7' />
-			</tr>
+			{ allDates }
 		</tbody>
 	);
 };
