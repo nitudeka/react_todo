@@ -16,8 +16,12 @@ export const allDatesOfMonth = (month, year) => {
 		return new Date(year, month, 0).getDate();
 	};
 
-	for (let i=1; i<=tatalNoOfDates(month - 1, year); i++) {
-		allDatesInLastMonth.push(i);
+	const firstDay = (month, year) => {
+		return new Date(year, month - 1, 1).getDay() - 1;
+	};
+
+	for (let i=firstDay(month, year); i>=0; i--) {
+		allDatesInLastMonth.push(tatalNoOfDates(month - 1, year) - i);
 	};
 
 	for (let i=1; i<=tatalNoOfDates(month, year); i++) {
