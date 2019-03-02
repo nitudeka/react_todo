@@ -43,7 +43,7 @@ export const allDatesOfMonth = (month, year) => {
 	};
 
 	// push the dates of the next month to the nextMonth array
-	for (let i=0; i<=lastDay(month, year); i++) {
+	for (let i=1; i<=lastDay(month, year); i++) {
 		allDatesInNextMonth.push(i);
 	};
 

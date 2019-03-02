@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import Td from './_td';
 
 const tableBody = (props) => {
-	console.log(props.dates);
+	const datesArray = [];
+	for(let i=0; i<props.dates.length/7; i++) {
+		datesArray.push(props.dates.slice(i*7, (i + 1) * 7));
+	};
 
 	return (
 		<tbody>
